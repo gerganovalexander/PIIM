@@ -1,7 +1,7 @@
-FROM amazoncorretto:17-alpine-jdk
+FROM openjdk:17-jdk
 
-COPY target/PIIM-0.0.1-SNAPSHOT.jar my-app.jar
+COPY target/*.jar piim-app.jar
 
-ENTRYPOINT ["java", "-jar","my-app.jar"]
+ENTRYPOINT ["java", "-jar","piim-app.jar"]
 
 EXPOSE 8080
