@@ -1,0 +1,23 @@
+version: "3.7"
+services:
+  maria-database:
+    image: mariadb:latest
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      - MARIADB_DATABASE=piim_database
+      - MARIADB_ROOT_PASSWORD=password
+
+
+  my-app:
+    build: .
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      - maria-database
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mariadb://maria-database:3306/piim_database?autoReconnect=true&useSSL=false
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=password
