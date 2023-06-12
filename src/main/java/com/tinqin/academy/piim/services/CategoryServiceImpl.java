@@ -44,6 +44,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public Category update(Category category) {
+        if (category.getId() <= 0) throw new InvalidParameterException("Category id is invalid.");
         if (categoryRepository.existsByName(category.getName()))
             throw new DuplicateEntityException("Category", "name", category.getName());
 
