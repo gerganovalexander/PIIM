@@ -5,19 +5,18 @@ import com.tinqin.academy.piim.models.User;
 import com.tinqin.academy.piim.repositories.UserRepository;
 import com.tinqin.academy.piim.services.contracts.UserService;
 import jakarta.persistence.EntityNotFoundException;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@AllArgsConstructor
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
 
-    public UserServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
 
     @Override
     public void createUser(User user) {

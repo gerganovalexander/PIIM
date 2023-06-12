@@ -4,12 +4,10 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.web.bind.annotation.RestController;
 
 
 @Table(name = "user")
 @Entity
-@RestController
 @Getter
 @Setter
 @NoArgsConstructor
