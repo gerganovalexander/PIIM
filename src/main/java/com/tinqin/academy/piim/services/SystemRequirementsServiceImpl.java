@@ -4,7 +4,6 @@ import com.tinqin.academy.piim.models.SystemRequirements;
 import com.tinqin.academy.piim.repositories.SystemRequirementsRepository;
 import com.tinqin.academy.piim.services.contracts.SystemRequirementsService;
 import jakarta.persistence.EntityNotFoundException;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,10 +12,9 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-@AllArgsConstructor
 public class SystemRequirementsServiceImpl implements SystemRequirementsService {
 
-    private SystemRequirementsRepository systemRequirementsRepository;
+    private final SystemRequirementsRepository systemRequirementsRepository;
 
     @Override
     public List<SystemRequirements> getAll() {
