@@ -1,14 +1,11 @@
 package com.tinqin.academy.piim.controllers;
 
 
-import com.tinqin.academy.piim.exceptions.DuplicateEntityException;
 import com.tinqin.academy.piim.models.User;
 import com.tinqin.academy.piim.services.contracts.UserService;
-import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
@@ -24,47 +21,29 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<User> createUser(@RequestBody User user) {
-        try {
-            userService.createUser(user);
-            return ResponseEntity.status(HttpStatus.OK).build();
-        } catch (DuplicateEntityException e) {
-            throw new ResponseStatusException(HttpStatus.CONFLICT, "User with email : " + user.getEmail() + "already exist");
-        }
+        userService.createUser(user);
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<User> updateUser(@PathVariable long id, @RequestBody User user) {
-        try {
-            userService.updateUser(id, user);
-            return ResponseEntity.status(HttpStatus.OK).build();
-        } catch (EntityNotFoundException e) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
-        }
+        userService.updateUser(id, user);
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<User> deleteUser(@PathVariable long id) {
-        try {
-            userService.deleteUser(id);
-            return ResponseEntity.status(HttpStatus.OK).build();
-        } catch (EntityNotFoundException e) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
-        }
+        userService.deleteUser(id);
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 
     @GetMapping("/{id}")
     public User getUserById(@PathVariable long id) {
-        try {
-            return userService.getUserById(id);
-        } catch (EntityNotFoundException e) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");
-        }
+        return userService.getUserById(id);
     }
 
-    @GetMapping("/all-users")
+    @GetMapping
     public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
-
-
 }
