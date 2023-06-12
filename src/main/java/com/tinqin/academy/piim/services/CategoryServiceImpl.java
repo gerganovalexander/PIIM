@@ -1,10 +1,10 @@
 package com.tinqin.academy.piim.services;
 
 import com.tinqin.academy.piim.exceptions.DuplicateEntityException;
-import com.tinqin.academy.piim.exceptions.EntityNotFoundException;
 import com.tinqin.academy.piim.models.Category;
 import com.tinqin.academy.piim.repositories.CategoryRepository;
 import com.tinqin.academy.piim.services.contracts.CategoryService;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

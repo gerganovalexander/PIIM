@@ -4,16 +4,13 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.web.bind.annotation.RestController;
 
 
-@Table(name = "user")
-@Entity
-@RestController
 @Getter
 @Setter
 @NoArgsConstructor
-
+@Entity
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +18,5 @@ public class User {
     private String firstName;
     private String lastName;
     private String email;
-
 
 }
