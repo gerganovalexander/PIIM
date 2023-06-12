@@ -1,9 +1,9 @@
 package com.tinqin.academy.piim.services;
 
-import com.tinqin.academy.piim.exceptions.EntityNotFoundException;
 import com.tinqin.academy.piim.models.Review;
 import com.tinqin.academy.piim.repositories.ReviewRepository;
 import com.tinqin.academy.piim.services.contracts.ReviewService;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
