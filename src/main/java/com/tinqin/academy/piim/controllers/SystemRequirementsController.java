@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/system_requirements")
+@RequestMapping("api/system_requirements")
 @RequiredArgsConstructor
 public class SystemRequirementsController {
 
