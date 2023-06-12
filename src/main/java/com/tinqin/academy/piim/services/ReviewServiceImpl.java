@@ -8,7 +8,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -28,18 +27,18 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public void createReview(Review review) {
-        reviewRepository.save(review);
+    public Review createReview(Review review) {
+        return reviewRepository.save(review);
     }
 
     @Override
-    public void updateReview(long id, Review review) {
+    public Review updateReview(long id, Review review) {
         Optional<Review> optionalReview = reviewRepository.findById(id);
         if (optionalReview.isPresent()) {
             Review reviewToUpdate = optionalReview.get();
             reviewToUpdate.setText(review.getText());
             reviewToUpdate.setScore(review.getScore());
-            reviewRepository.save(reviewToUpdate);
+            return reviewRepository.save(reviewToUpdate);
         } else {
             throw new IllegalArgumentException(String.format("Review with ID:%s not found", id));
         }

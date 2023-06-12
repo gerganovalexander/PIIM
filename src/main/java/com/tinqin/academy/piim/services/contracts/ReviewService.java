@@ -10,9 +10,9 @@ public interface ReviewService {
 
     Review getReviewById(long id);
 
-    void createReview(Review review);
+    Review createReview(Review review);
 
-    void updateReview(long id, Review review);
+    Review updateReview(long id, Review review);
 
     void deleteReview(long id);
 
