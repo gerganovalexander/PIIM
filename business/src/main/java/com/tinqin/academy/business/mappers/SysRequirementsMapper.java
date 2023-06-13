@@ -1,6 +1,6 @@
 package com.tinqin.academy.business.mappers;
 
-import com.tinqin.academy.business.dtos.SystemRequirementsDto;
+import com.tinqin.academy.api.dtos.SystemRequirementsDto;
 import com.tinqin.academy.data.models.SystemRequirements;
 
 public class SysRequirementsMapper {

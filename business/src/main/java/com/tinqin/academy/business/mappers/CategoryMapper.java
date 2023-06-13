@@ -1,6 +1,6 @@
 package com.tinqin.academy.business.mappers;
 
-import com.tinqin.academy.business.dtos.CategoryDto;
+import com.tinqin.academy.api.dtos.CategoryDto;
 import com.tinqin.academy.data.models.Category;
 
 public class CategoryMapper {

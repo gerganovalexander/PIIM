@@ -22,7 +22,8 @@
     <modules>
         <module>data</module>
         <module>business</module>
-        <module>web</module>
+        <module>rest</module>
+        <module>api</module>
     </modules>
 
     <properties>
@@ -39,6 +40,11 @@
             <artifactId>lombok</artifactId>
             <version>1.18.28</version>
             <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
     </dependencies>
 

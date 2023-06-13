@@ -1,6 +1,6 @@
 package com.tinqin.academy.business.mappers;
 
-import com.tinqin.academy.business.dtos.UserDto;
+import com.tinqin.academy.api.dtos.UserDto;
 import com.tinqin.academy.data.models.User;
 
 public class UserMapper {

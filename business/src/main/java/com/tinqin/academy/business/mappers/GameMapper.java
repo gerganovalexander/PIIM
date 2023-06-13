@@ -1,6 +1,6 @@
 package com.tinqin.academy.business.mappers;
 
-import com.tinqin.academy.business.dtos.GameDto;
+import com.tinqin.academy.api.dtos.GameDto;
 import com.tinqin.academy.data.models.Game;
 
 public class GameMapper {
