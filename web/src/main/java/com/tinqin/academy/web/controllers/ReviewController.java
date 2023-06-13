@@ -29,7 +29,7 @@ public class ReviewController {
         return ResponseEntity.ok(reviewList);
     }
 
-    @GetMapping("/id")
+    @GetMapping("/{id}")
     public ResponseEntity<ReviewDto> getReviewById(@PathVariable long id) {
         ReviewDto review = reviewToDto(reviewService.getReviewById(id));
         return ResponseEntity.ok(review);
@@ -41,13 +41,13 @@ public class ReviewController {
         return ResponseEntity.status(HttpStatus.CREATED).body(createdReview);
     }
 
-    @PutMapping("/id")
+    @PutMapping("/{id}")
     public ResponseEntity<ReviewDto> updateReview(@PathVariable Long id, @RequestBody ReviewDto review) {
         ReviewDto updatedReview = reviewToDto(reviewService.updateReview(id, dtoToReview(review, id)));
         return ResponseEntity.ok(updatedReview);
     }
 
-    @DeleteMapping("/id")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteReview(@PathVariable Long id) {
         reviewService.deleteReview(id);
         return ResponseEntity.noContent().build();
