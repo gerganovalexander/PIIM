@@ -32,6 +32,10 @@ public class GameServiceImpl implements GameService {
         if (gameRepository.existsByName(game.getName())) {
             throw new DuplicateEntityException("Game", "name", game.getName());
         }
+
+        //make a call to first URL > GET ID
+        //Make a call to second URL using the first ID to get review score
+        //Set review score save
         return gameRepository.save(game);
     }
 
