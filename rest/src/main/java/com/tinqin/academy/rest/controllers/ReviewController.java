@@ -15,7 +15,7 @@ import static com.tinqin.academy.business.mappers.ReviewMapper.dtoToReview;
 import static com.tinqin.academy.business.mappers.ReviewMapper.reviewToDto;
 
 @RestController
-@RequestMapping("/reviews")
+@RequestMapping("/api/reviews")
 @RequiredArgsConstructor
 public class ReviewController {
 

@@ -25,8 +25,9 @@ public class Game {
     private String name;
 
     @OneToMany
-//    @JoinColumn(name = "id")
     private Set<Category> category;
+
+    private String avgReviewDescription;
 
     private LocalDateTime releaseDate;
 
