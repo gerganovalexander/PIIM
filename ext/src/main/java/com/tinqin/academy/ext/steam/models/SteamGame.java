@@ -1,4 +1,4 @@
-package com.tinqin.academy.data.models.feignapi;
+package com.tinqin.academy.ext.steam.models;
 
 import lombok.Data;
 

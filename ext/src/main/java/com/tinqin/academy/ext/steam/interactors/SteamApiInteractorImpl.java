@@ -1,13 +1,14 @@
-package com.tinqin.academy.business.services;
+package com.tinqin.academy.ext.steam.interactors;
 
-import com.tinqin.academy.data.models.feignapi.SteamGameDescription;
-import com.tinqin.academy.data.models.feignapi.SteamGames;
+import com.tinqin.academy.ext.steam.models.SteamGameDescription;
+import com.tinqin.academy.ext.steam.models.SteamGames;
+import com.tinqin.academy.ext.steam.feign.SteamApiClient;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class SteamApiServiceImpl implements com.tinqin.academy.business.services.contracts.SteamApiService {
+public class SteamApiInteractorImpl implements SteamApiInteractor {
 
     private final SteamApiClient steamApiClient;
 

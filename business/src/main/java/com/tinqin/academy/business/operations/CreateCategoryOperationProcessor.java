@@ -1,7 +1,7 @@
 package com.tinqin.academy.business.operations;
 
 import com.tinqin.academy.api.category.create.CreateCategoryInput;
-import com.tinqin.academy.api.category.create.CreateCategoryProcessor;
+import com.tinqin.academy.api.category.create.CreateCategoryOperation;
 import com.tinqin.academy.api.category.create.CreateCategoryResult;
 import com.tinqin.academy.business.exceptions.DuplicateEntityException;
 import com.tinqin.academy.data.models.Category;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 @Service
 
-public class CreateCategoryOperation implements CreateCategoryProcessor {
+public class CreateCategoryOperationProcessor implements CreateCategoryOperation {
     private final CategoryRepository categoryRepository;
     private final ConversionService conversionService;
 
