@@ -8,7 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@EnableFeignClients(basePackages = {"com.tinqin.academy"})
+@EnableFeignClients(basePackages = {"com.tinqin.academy.ext"})
 @ComponentScan(basePackages = {"com.tinqin.academy"})
 @EntityScan(basePackages = {"com.tinqin.academy.data.models"})
 @EnableJpaRepositories(basePackages = {"com.tinqin.academy.data.repositories"})

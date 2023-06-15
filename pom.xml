@@ -24,6 +24,7 @@
         <module>business</module>
         <module>rest</module>
         <module>api</module>
+        <module>ext</module>
     </modules>
 
     <properties>

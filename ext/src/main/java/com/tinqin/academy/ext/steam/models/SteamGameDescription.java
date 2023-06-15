@@ -1,4 +1,4 @@
-package com.tinqin.academy.data.models.feignapi;
+package com.tinqin.academy.ext.steam.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;

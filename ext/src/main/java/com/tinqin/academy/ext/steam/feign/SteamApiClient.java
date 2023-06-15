@@ -1,7 +1,7 @@
-package com.tinqin.academy.business.services;
+package com.tinqin.academy.ext.steam.feign;
 
-import com.tinqin.academy.data.models.feignapi.SteamGameDescription;
-import com.tinqin.academy.data.models.feignapi.SteamGames;
+import com.tinqin.academy.ext.steam.models.SteamGameDescription;
+import com.tinqin.academy.ext.steam.models.SteamGames;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
