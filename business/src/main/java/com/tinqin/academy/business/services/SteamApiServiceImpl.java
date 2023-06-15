@@ -1,6 +1,7 @@
 package com.tinqin.academy.business.services;
 
-import com.fasterxml.jackson.databind.JsonNode;
+import com.tinqin.academy.data.models.feignapi.SteamGameDescription;
+import com.tinqin.academy.data.models.feignapi.SteamGames;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,10 +14,10 @@ public class SteamApiServiceImpl implements com.tinqin.academy.business.services
     @Override
     public String getReviewByName(String name) {
 
-        JsonNode steamGame = steamApiClient.getSteamGameIdByName(name);
-        Long gameId = steamGame.get("items").get(0).get("id").asLong();
+        SteamGames steamGames = steamApiClient.getSteamGamesByName(name);
+        Long gameId = steamGames.getGames().get(0).getId();
 
-        JsonNode steamGameScore = steamApiClient.getSteamScoreById(gameId);
-        return steamGameScore.get("query_summary").get("review_score_desc").asText();
+        SteamGameDescription steamGameDescription = steamApiClient.getSteamDescriptionById(gameId);
+        return steamGameDescription.getSteamGameReview().getReviewScore();
     }
 }

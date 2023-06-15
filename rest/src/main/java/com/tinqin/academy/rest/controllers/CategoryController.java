@@ -1,5 +1,8 @@
 package com.tinqin.academy.rest.controllers;
 
+import com.tinqin.academy.api.category.create.CreateCategoryInput;
+import com.tinqin.academy.api.category.create.CreateCategoryProcessor;
+import com.tinqin.academy.api.category.create.CreateCategoryResult;
 import com.tinqin.academy.api.dtos.CategoryDto;
 import com.tinqin.academy.business.mappers.CategoryMapper;
 import com.tinqin.academy.business.services.contracts.CategoryService;
@@ -19,6 +22,7 @@ import static com.tinqin.academy.business.mappers.CategoryMapper.dtoToCategory;
 public class CategoryController {
 
     private final CategoryService categoryService;
+    private final CreateCategoryProcessor createCategoryProcessor;
 
     @GetMapping
     public List<CategoryDto> getAll() {
@@ -39,8 +43,8 @@ public class CategoryController {
     }
 
     @PostMapping
-    public CategoryDto create(@RequestBody @Valid CategoryDto category) {
-        return categoryToDto(categoryService.create(dtoToCategory(category)));
+    public CreateCategoryResult create(@RequestBody @Valid CreateCategoryInput category) {
+        return createCategoryProcessor.process(category);
     }
 
     @PutMapping("/{id}")
