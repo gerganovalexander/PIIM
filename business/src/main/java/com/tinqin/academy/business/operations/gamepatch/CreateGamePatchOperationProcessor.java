@@ -1,4 +1,4 @@
-package com.tinqin.academy.business.operations.gamepatch.create;
+package com.tinqin.academy.business.operations.gamepatch;
 
 import com.tinqin.academy.api.entityoutputmodels.GamePatchOutput;
 import com.tinqin.academy.api.gamepatch.create.CreateGamePatchInput;

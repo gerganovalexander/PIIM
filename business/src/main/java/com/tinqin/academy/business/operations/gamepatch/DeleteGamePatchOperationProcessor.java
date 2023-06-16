@@ -1,4 +1,4 @@
-package com.tinqin.academy.business.operations.gamepatch.delete;
+package com.tinqin.academy.business.operations.gamepatch;
 
 import com.tinqin.academy.api.gamepatch.delete.DeleteGamePatchInput;
 import com.tinqin.academy.api.gamepatch.delete.DeleteGamePatchOperation;

@@ -1,4 +1,4 @@
-package com.tinqin.academy.business.operations.gamepatch.update;
+package com.tinqin.academy.business.operations.gamepatch;
 
 import com.tinqin.academy.api.entityoutputmodels.GamePatchOutput;
 import com.tinqin.academy.api.gamepatch.update.UpdateGamePatchInput;
@@ -6,7 +6,6 @@ import com.tinqin.academy.api.gamepatch.update.UpdateGamePatchOperation;
 import com.tinqin.academy.api.gamepatch.update.UpdateGamePatchResult;
 import com.tinqin.academy.data.models.GamePatch;
 import com.tinqin.academy.data.repositories.GamePatchRepository;
-import com.tinqin.academy.data.repositories.GameRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.convert.ConversionService;
@@ -16,7 +15,6 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class UpdateGamePatchOperationProcessor implements UpdateGamePatchOperation {
     private final ConversionService conversionService;
-    private final GameRepository gameRepository;
     private final GamePatchRepository gamePatchRepository;
 
     @Override

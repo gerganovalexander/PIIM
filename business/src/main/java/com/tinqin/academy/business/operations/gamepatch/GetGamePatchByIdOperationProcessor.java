@@ -1,4 +1,4 @@
-package com.tinqin.academy.business.operations.gamepatch.getbyid;
+package com.tinqin.academy.business.operations.gamepatch;
 
 import com.tinqin.academy.api.entityoutputmodels.GamePatchOutput;
 import com.tinqin.academy.api.gamepatch.getbyid.GetGamePatchByIdInput;

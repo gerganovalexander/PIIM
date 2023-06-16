@@ -1,4 +1,4 @@
-package com.tinqin.academy.business.operations.gamepatch.getall;
+package com.tinqin.academy.business.operations.gamepatch;
 
 import com.tinqin.academy.api.gamepatch.getall.GetAllGamePatchesInput;
 import com.tinqin.academy.api.gamepatch.getall.GetAllGamePatchesOperation;
