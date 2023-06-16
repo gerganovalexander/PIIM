@@ -13,7 +13,7 @@ public class SysRequirementsMapper {
 
     public static SystemRequirements dtoToSysReq(SystemRequirementsDto dto, long id) {
         SystemRequirements sysReq = dtoToSysReq(dto);
-        sysReq.setSystemRequirementsId(id);
+        sysReq.setId(id);
         return sysReq;
     }
 

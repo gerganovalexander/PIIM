@@ -34,7 +34,7 @@ public class SystemRequirementsServiceImpl implements SystemRequirementsService 
 
     @Override
     public void update(SystemRequirements systemRequirementsObject) {
-        Optional<SystemRequirements> requirementsToUpdate = systemRequirementsRepository.findById(systemRequirementsObject.getSystemRequirementsId());
+        Optional<SystemRequirements> requirementsToUpdate = systemRequirementsRepository.findById(systemRequirementsObject.getId());
         if (requirementsToUpdate.isPresent()) {
             systemRequirementsRepository.save(systemRequirementsObject);
         }

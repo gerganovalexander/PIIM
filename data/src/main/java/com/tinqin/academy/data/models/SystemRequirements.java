@@ -16,7 +16,7 @@ public class SystemRequirements {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long systemRequirementsId;
+    private Long id;
 
     private String operatingSystem;
     private String cpu;
@@ -28,11 +28,11 @@ public class SystemRequirements {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         SystemRequirements that = (SystemRequirements) o;
-        return Objects.equals(systemRequirementsId, that.systemRequirementsId);
+        return Objects.equals(id, that.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(systemRequirementsId);
+        return Objects.hash(id);
     }
 }

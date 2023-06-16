@@ -36,4 +36,7 @@ public class Game {
     @ManyToOne
     private SystemRequirements systemRequirements;
 
+    @OneToMany(mappedBy = "game")
+    private Set<GamePatch> listOfPatches;
+
 }
