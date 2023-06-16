@@ -16,7 +16,6 @@ import com.tinqin.academy.api.user.getbyid.GetUserByIdResult;
 import com.tinqin.academy.api.user.update.UpdateUserInput;
 import com.tinqin.academy.api.user.update.UpdateUserOperation;
 import com.tinqin.academy.api.user.update.UpdateUserResult;
-import com.tinqin.academy.business.services.contracts.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,7 +24,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/user")
 public class UserController {
 
-    private final UserService userService;
+
     private final CreateUserOperation createUserOperation;
     private final UpdateUserOperation updateUserOperation;
     private final DeleteUserOperation deleteUserOperation;
