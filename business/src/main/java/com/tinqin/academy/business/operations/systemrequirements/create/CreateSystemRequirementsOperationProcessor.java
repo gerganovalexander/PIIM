@@ -10,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 
+import java.security.InvalidParameterException;
+
 @RequiredArgsConstructor
 @Service
 public class CreateSystemRequirementsOperationProcessor implements CreateSystemRequirementsOperation {
@@ -20,7 +22,7 @@ public class CreateSystemRequirementsOperationProcessor implements CreateSystemR
     public CreateSystemRequirementsResult process(CreateSystemRequirementsInput input) {
         SystemRequirements systemRequirements = conversionService.convert(input, SystemRequirements.class);
         if (systemRequirements == null) {
-            throw new NullPointerException("Input is empty.");
+            throw new InvalidParameterException("Input is empty.");
         }
         boolean alreadyExist = systemRequirementsRepository.existsByCpuAndGpuAndOperatingSystemAndRam(
                 systemRequirements.getCpu(),

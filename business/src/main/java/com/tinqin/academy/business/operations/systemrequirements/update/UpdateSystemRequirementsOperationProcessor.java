@@ -10,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 
+import java.security.InvalidParameterException;
+
 @RequiredArgsConstructor
 @Service
 public class UpdateSystemRequirementsOperationProcessor implements UpdateSystemRequirementsOperation {
@@ -24,7 +26,7 @@ public class UpdateSystemRequirementsOperationProcessor implements UpdateSystemR
         }
         SystemRequirements systemRequirementsObject = conversionService.convert(input, SystemRequirements.class);
         if (systemRequirementsObject == null) {
-            throw new NullPointerException();
+            throw new InvalidParameterException();
         }
         systemRequirementsRepository.save(systemRequirementsObject);
         return conversionService.convert(systemRequirementsObject, UpdateSystemRequirementsResult.class);

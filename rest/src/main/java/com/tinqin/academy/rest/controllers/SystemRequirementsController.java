@@ -15,6 +15,7 @@ import com.tinqin.academy.api.systemrequirements.getbyid.GetSystemRequirementsBy
 import com.tinqin.academy.api.systemrequirements.update.UpdateSystemRequirementsInput;
 import com.tinqin.academy.api.systemrequirements.update.UpdateSystemRequirementsOperation;
 import com.tinqin.academy.api.systemrequirements.update.UpdateSystemRequirementsResult;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -46,7 +47,7 @@ public class SystemRequirementsController {
     }
 
     @PutMapping("{id}")
-    public UpdateSystemRequirementsResult updateSystemRequirements(@PathVariable Long id, @RequestBody UpdateSystemRequirementsInput systemRequirementsInput) {
+    public UpdateSystemRequirementsResult updateSystemRequirements(@PathVariable Long id, @RequestBody @Valid UpdateSystemRequirementsInput systemRequirementsInput) {
         systemRequirementsInput.setId(id);
         return updateSystemRequirementsOperation.process(systemRequirementsInput);
     }
