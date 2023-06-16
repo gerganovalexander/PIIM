@@ -1,4 +1,4 @@
-package com.tinqin.academy.business.converters;
+package com.tinqin.academy.business.converters.categories;
 
 import com.tinqin.academy.api.category.create.CreateCategoryInput;
 import com.tinqin.academy.data.models.Category;
