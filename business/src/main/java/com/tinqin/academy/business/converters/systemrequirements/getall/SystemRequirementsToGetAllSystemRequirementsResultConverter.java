@@ -11,7 +11,7 @@ public class SystemRequirementsToGetAllSystemRequirementsResultConverter impleme
     @Override
     public GetAllSystemRequirementsResult convert(SystemRequirements systemRequirements) {
         return GetAllSystemRequirementsResult.builder()
-                .id(systemRequirements.getSystemRequirementsId())
+                .id(systemRequirements.getId())
                 .operatingSystem(systemRequirements.getOperatingSystem())
                 .cpu(systemRequirements.getCpu())
                 .gpu(systemRequirements.getGpu())

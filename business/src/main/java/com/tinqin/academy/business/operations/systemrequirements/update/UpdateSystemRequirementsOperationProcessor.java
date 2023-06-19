@@ -21,7 +21,7 @@ public class UpdateSystemRequirementsOperationProcessor implements UpdateSystemR
 
     @Override
     public UpdateSystemRequirementsResult process(UpdateSystemRequirementsInput input) {
-        boolean doesExists = systemRequirementsRepository.existsBySystemRequirementsId(input.getId());
+        boolean doesExists = systemRequirementsRepository.existsById(input.getId());
         if (!doesExists) {
             throw new EntityNotFoundException("System Requirements with this Id does not exist.");
         }

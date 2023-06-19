@@ -10,7 +10,7 @@ public class SystemRequirementsToGetByIdSystemRequirementsResult implements Conv
     @Override
     public GetSystemRequirementsByIdResult convert(SystemRequirements systemRequirements) {
         return GetSystemRequirementsByIdResult.builder()
-                .id(systemRequirements.getSystemRequirementsId())
+                .id(systemRequirements.getId())
                 .operatingSystem(systemRequirements.getOperatingSystem())
                 .cpu(systemRequirements.getCpu())
                 .gpu(systemRequirements.getGpu())

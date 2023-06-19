@@ -10,7 +10,7 @@ public class SystemRequirementsToUpdateSystemRequirementsResultConverter impleme
     @Override
     public UpdateSystemRequirementsResult convert(SystemRequirements systemRequirements) {
         return UpdateSystemRequirementsResult.builder()
-                .id(systemRequirements.getSystemRequirementsId())
+                .id(systemRequirements.getId())
                 .operatingSystem(systemRequirements.getOperatingSystem())
                 .cpu(systemRequirements.getCpu())
                 .gpu(systemRequirements.getGpu())

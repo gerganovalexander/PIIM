@@ -11,7 +11,7 @@ public class UpdateSystemRequirementsToSystemRequirementsConverter implements Co
     @Override
     public SystemRequirements convert(UpdateSystemRequirementsInput updateSystemRequirementsInput) {
         return SystemRequirements.builder()
-                .systemRequirementsId(updateSystemRequirementsInput.getId())
+                .id(updateSystemRequirementsInput.getId())
                 .operatingSystem(updateSystemRequirementsInput.getOperatingSystem())
                 .cpu(updateSystemRequirementsInput.getCpu())
                 .gpu(updateSystemRequirementsInput.getGpu())

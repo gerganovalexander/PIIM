@@ -7,7 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface SystemRequirementsRepository extends JpaRepository<SystemRequirements, Long> {
 
-    boolean existsBySystemRequirementsId(Long id);
-
     boolean existsByCpuAndGpuAndOperatingSystemAndRam(String cpu, String gpu, String os, Integer ram);
 }
