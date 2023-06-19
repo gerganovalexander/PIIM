@@ -7,7 +7,6 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -15,11 +14,6 @@ import java.util.Optional;
 public class ReviewServiceImpl implements ReviewService {
 
     private final ReviewRepository reviewRepository;
-
-    @Override
-    public List<Review> getAllReviews() {
-        return reviewRepository.findAll();
-    }
 
     @Override
     public Review getReviewById(long id) {

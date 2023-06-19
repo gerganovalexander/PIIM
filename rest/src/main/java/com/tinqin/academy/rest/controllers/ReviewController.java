@@ -1,56 +1,52 @@
 package com.tinqin.academy.rest.controllers;
 
-import com.tinqin.academy.api.dtos.ReviewDto;
-import com.tinqin.academy.business.mappers.ReviewMapper;
-import com.tinqin.academy.business.services.contracts.ReviewService;
+import com.tinqin.academy.api.review.create.CreateReviewInput;
+import com.tinqin.academy.api.review.create.CreateReviewOperation;
+import com.tinqin.academy.api.review.create.CreateReviewResult;
+import com.tinqin.academy.api.review.delete.DeleteReviewInput;
+import com.tinqin.academy.api.review.delete.DeleteReviewOperation;
+import com.tinqin.academy.api.review.delete.DeleteReviewResult;
+import com.tinqin.academy.api.review.getbyid.GetByIdReviewInput;
+import com.tinqin.academy.api.review.getbyid.GetByIdReviewOperation;
+import com.tinqin.academy.api.review.getbyid.GetByIdReviewResult;
+import com.tinqin.academy.api.review.update.UpdateReviewInput;
+import com.tinqin.academy.api.review.update.UpdateReviewOperation;
+import com.tinqin.academy.api.review.update.UpdateReviewResult;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.stream.Collectors;
-
-import static com.tinqin.academy.business.mappers.ReviewMapper.dtoToReview;
-import static com.tinqin.academy.business.mappers.ReviewMapper.reviewToDto;
 
 @RestController
 @RequestMapping("/api/reviews")
 @RequiredArgsConstructor
 public class ReviewController {
 
-    private final ReviewService reviewService;
 
-    @GetMapping
-    public ResponseEntity<List<ReviewDto>> getAllReviews() {
-        List<ReviewDto> reviewList = reviewService.getAllReviews().stream()
-                .map(ReviewMapper::reviewToDto)
-                .collect(Collectors.toList());
-        return ResponseEntity.ok(reviewList);
-    }
+    private final CreateReviewOperation createReviewOperation;
+    private final UpdateReviewOperation updateReviewOperation;
+    private final DeleteReviewOperation deleteReviewOperation;
+    private final GetByIdReviewOperation getByIdReviewOperation;
 
     @GetMapping("/{id}")
-    public ResponseEntity<ReviewDto> getReviewById(@PathVariable long id) {
-        ReviewDto review = reviewToDto(reviewService.getReviewById(id));
-        return ResponseEntity.ok(review);
+    public GetByIdReviewResult getById(@PathVariable @Valid long id) {
+        return getByIdReviewOperation.process(GetByIdReviewInput.builder().id(id).build());
     }
 
     @PostMapping
-    public ResponseEntity<ReviewDto> createReview(@RequestBody ReviewDto review) {
-        ReviewDto createdReview = reviewToDto(reviewService.createReview(dtoToReview(review)));
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdReview);
+    public CreateReviewResult create(@RequestBody @Valid CreateReviewInput review) {
+        return createReviewOperation.process(review);
     }
 
+
     @PutMapping("/{id}")
-    public ResponseEntity<ReviewDto> updateReview(@PathVariable Long id, @RequestBody ReviewDto review) {
-        ReviewDto updatedReview = reviewToDto(reviewService.updateReview(id, dtoToReview(review, id)));
-        return ResponseEntity.ok(updatedReview);
+    public UpdateReviewResult update(@PathVariable long id, @RequestBody @Valid UpdateReviewInput review) {
+        review.setId(id);
+        return updateReviewOperation.process(review);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteReview(@PathVariable Long id) {
-        reviewService.deleteReview(id);
-        return ResponseEntity.noContent().build();
+    public DeleteReviewResult delete(@PathVariable long id) {
+        return deleteReviewOperation.process(DeleteReviewInput.builder().id(id).build());
     }
 
 
