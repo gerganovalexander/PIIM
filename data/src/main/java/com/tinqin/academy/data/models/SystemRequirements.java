@@ -1,22 +1,22 @@
 package com.tinqin.academy.data.models;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Objects;
 
 @Getter
 @Setter
+@Builder
 @RequiredArgsConstructor
 @Entity
 @Table(name = "system_requirements")
+@AllArgsConstructor
 public class SystemRequirements {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long systemRequirementsId;
+    private Long id;
 
     private String operatingSystem;
     private String cpu;
@@ -28,11 +28,11 @@ public class SystemRequirements {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         SystemRequirements that = (SystemRequirements) o;
-        return Objects.equals(systemRequirementsId, that.systemRequirementsId);
+        return Objects.equals(id, that.id) && Objects.equals(operatingSystem, that.operatingSystem) && Objects.equals(cpu, that.cpu) && Objects.equals(gpu, that.gpu) && Objects.equals(ram, that.ram);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(systemRequirementsId);
+        return Objects.hash(id);
     }
 }
