@@ -3,9 +3,9 @@ package com.tinqin.academy.business.operations.systemrequirements.create;
 import com.tinqin.academy.api.systemrequirements.create.CreateSystemRequirementsInput;
 import com.tinqin.academy.api.systemrequirements.create.CreateSystemRequirementsOperation;
 import com.tinqin.academy.api.systemrequirements.create.CreateSystemRequirementsResult;
-import com.tinqin.academy.business.exceptions.DuplicateEntityException;
 import com.tinqin.academy.data.models.SystemRequirements;
 import com.tinqin.academy.data.repositories.SystemRequirementsRepository;
+import jakarta.persistence.EntityExistsException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
@@ -31,7 +31,7 @@ public class CreateSystemRequirementsOperationProcessor implements CreateSystemR
                 systemRequirements.getOperatingSystem(),
                 systemRequirements.getRam());
         if (alreadyExist) {
-            throw new DuplicateEntityException("SystemRequirements with these properties already exists.");
+            throw new EntityExistsException("System requirements with those properties already exists.");
         }
 
         systemRequirements = systemRequirementsRepository.save(systemRequirements);

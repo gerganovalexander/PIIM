@@ -24,7 +24,7 @@ public class GetAllSystemRequirementsOperationProcessor implements GetAllSystemR
         List<GetAllSystemRequirementsResult> list = systemRequirementsRepository.findAll().stream()
                 .map(systemRequirements -> conversionService.convert(systemRequirements, GetAllSystemRequirementsResult.class))
                 .collect(Collectors.toList());
-        
+
         return GetAllSystemRequirementsResults.builder()
                 .systemRequirementsResults(list)
                 .build();

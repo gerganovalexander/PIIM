@@ -3,10 +3,10 @@ package com.tinqin.academy.business.operations.game;
 import com.tinqin.academy.api.game.create.CreateGameInput;
 import com.tinqin.academy.api.game.create.CreateGameOperation;
 import com.tinqin.academy.api.game.create.CreateGameResult;
-import com.tinqin.academy.business.exceptions.DuplicateEntityException;
 import com.tinqin.academy.data.models.Game;
 import com.tinqin.academy.data.repositories.GameRepository;
 import com.tinqin.academy.ext.steam.interactors.SteamApiInteractor;
+import jakarta.persistence.EntityExistsException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
@@ -29,7 +29,7 @@ public class CreateGameOperationProcessor implements CreateGameOperation {
                 .build();
 
         if (gameRepository.existsByName(game.getName())) {
-            throw new DuplicateEntityException("Game", "name", game.getName());
+            throw new EntityExistsException(String.format("Game with name %s already exists.", input.getName()));
         }
 
         game.setAvgReviewDescription(steamApiInteractor.getReviewByName(game.getName()));

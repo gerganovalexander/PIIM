@@ -3,9 +3,9 @@ package com.tinqin.academy.business.operations.categories;
 import com.tinqin.academy.api.category.create.CreateCategoryInput;
 import com.tinqin.academy.api.category.create.CreateCategoryOperation;
 import com.tinqin.academy.api.category.create.CreateCategoryResult;
-import com.tinqin.academy.business.exceptions.DuplicateEntityException;
 import com.tinqin.academy.data.models.Category;
 import com.tinqin.academy.data.repositories.CategoryRepository;
+import jakarta.persistence.EntityExistsException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
@@ -27,7 +27,7 @@ public class CreateCategoryOperationProcessor implements CreateCategoryOperation
             throw new InvalidParameterException("Input is empty.");
         }
         if (categoryRepository.existsByName(category.getName()))
-            throw new DuplicateEntityException("Category", "name", category.getName());
+            throw new EntityExistsException(String.format("Category with name %s already exists.", input.getName()));
 
         category = categoryRepository.save(category);
         return conversionService.convert(category, CreateCategoryResult.class);

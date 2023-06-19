@@ -3,9 +3,9 @@ package com.tinqin.academy.business.operations.user;
 import com.tinqin.academy.api.user.update.UpdateUserInput;
 import com.tinqin.academy.api.user.update.UpdateUserOperation;
 import com.tinqin.academy.api.user.update.UpdateUserResult;
-import com.tinqin.academy.business.exceptions.DuplicateEntityException;
 import com.tinqin.academy.data.models.User;
 import com.tinqin.academy.data.repositories.UserRepository;
+import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.convert.ConversionService;
@@ -27,7 +27,7 @@ public class UpdateUserOperationProcessor implements UpdateUserOperation {
         Long id = user.getId();
         String email = userInput.getEmail();
         if (userRepository.existsUserByEmail(email) && !userRepository.findByEmail(email).getId().equals(id)) {
-            throw new DuplicateEntityException("User", "email", email);
+            throw new EntityExistsException(String.format("User with email %s already exists.", userInput.getEmail()));
         }
         userRepository.updateFieldsByUser(id, user);
         return conversionService.convert(user, UpdateUserResult.class);
