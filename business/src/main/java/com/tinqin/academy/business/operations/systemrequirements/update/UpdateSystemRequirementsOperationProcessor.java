@@ -15,6 +15,7 @@ import java.security.InvalidParameterException;
 @RequiredArgsConstructor
 @Service
 public class UpdateSystemRequirementsOperationProcessor implements UpdateSystemRequirementsOperation {
+
     private final SystemRequirementsRepository systemRequirementsRepository;
     private final ConversionService conversionService;
 
@@ -28,7 +29,9 @@ public class UpdateSystemRequirementsOperationProcessor implements UpdateSystemR
         if (systemRequirementsObject == null) {
             throw new InvalidParameterException();
         }
+
         systemRequirementsRepository.save(systemRequirementsObject);
+
         return conversionService.convert(systemRequirementsObject, UpdateSystemRequirementsResult.class);
     }
 }

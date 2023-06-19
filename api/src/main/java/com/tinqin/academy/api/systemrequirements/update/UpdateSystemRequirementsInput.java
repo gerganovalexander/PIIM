@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UpdateSystemRequirementsInput implements OperationInput {
+
     @NotNull
     Long id;
 

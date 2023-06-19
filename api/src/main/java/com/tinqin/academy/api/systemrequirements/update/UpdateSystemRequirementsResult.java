@@ -11,6 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UpdateSystemRequirementsResult implements OperationResult {
+
     Long id;
     private String operatingSystem;
     private String cpu;

@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class GetAllSystemRequirementsResult {
+
     private Long id;
     private String operatingSystem;
     private String cpu;

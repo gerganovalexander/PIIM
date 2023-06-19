@@ -20,6 +20,7 @@ public class DeleteSystemRequirementsOperationProcessor implements DeleteSystemR
         SystemRequirements systemRequirements = systemRequirementsRepository.findById(input.getId())
                 .orElseThrow(() -> new EntityNotFoundException("System Requirements with this Id does not exist."));
         systemRequirementsRepository.delete(systemRequirements);
+
         return DeleteSystemRequirementsResult.builder()
                 .success(true)
                 .build();

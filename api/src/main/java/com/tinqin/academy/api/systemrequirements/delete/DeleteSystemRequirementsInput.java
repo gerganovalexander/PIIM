@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DeleteSystemRequirementsInput implements OperationInput {
-    Long id;
 
+    Long id;
 }

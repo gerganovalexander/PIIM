@@ -12,6 +12,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 public class GetAllSystemRequirementsResults implements OperationResult {
+
     private final List<GetAllSystemRequirementsResult> systemRequirementsResults;
 
     public GetAllSystemRequirementsResults() {

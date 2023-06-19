@@ -8,6 +8,5 @@ import lombok.Data;
 @Data
 @Builder
 @AllArgsConstructor
-
 public class GetAllSystemRequirementsInput implements OperationInput {
 }
