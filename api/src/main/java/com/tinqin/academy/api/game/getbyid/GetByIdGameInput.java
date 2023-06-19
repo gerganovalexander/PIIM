@@ -1,15 +1,13 @@
 package com.tinqin.academy.api.game.getbyid;
 
 import com.tinqin.academy.api.generics.OperationInput;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
-@Builder
-@AllArgsConstructor
+@Getter
+@Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class GetByIdGameInput implements OperationInput {
 
     private Long id;

@@ -1,17 +1,15 @@
 package com.tinqin.academy.api.game.create;
 
 import com.tinqin.academy.api.generics.OperationInput;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
-@Data
-@Builder
-@AllArgsConstructor
+@Getter
+@Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class CreateGameInput implements OperationInput {
 
     private String name;

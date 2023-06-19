@@ -1,15 +1,13 @@
 package com.tinqin.academy.api.game.getbyname;
 
 import com.tinqin.academy.api.generics.OperationInput;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
-@Builder
-@AllArgsConstructor
+@Getter
+@Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class GetByNameGameInput implements OperationInput {
     private String name;
 }

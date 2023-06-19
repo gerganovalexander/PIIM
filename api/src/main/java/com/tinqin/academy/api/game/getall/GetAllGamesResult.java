@@ -1,17 +1,15 @@
 package com.tinqin.academy.api.game.getall;
 
 import com.tinqin.academy.api.generics.OperationResult;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
-@Data
-@Builder
-@AllArgsConstructor
+@Getter
+@Setter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class GetAllGamesResult implements OperationResult {
 
     private Long id;
