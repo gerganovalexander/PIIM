@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.tinqin.academy</groupId>
+        <groupId>com.tinqin.academy.piim</groupId>
         <artifactId>PIIM</artifactId>
         <version>${revision}</version>
     </parent>
@@ -13,13 +13,13 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.tinqin.academy</groupId>
+            <groupId>com.tinqin.academy.piim</groupId>
             <artifactId>business</artifactId>
             <version>${revision}</version>
         </dependency>
 
         <dependency>
-            <groupId>com.tinqin.academy</groupId>
+            <groupId>com.tinqin.academy.piim</groupId>
             <artifactId>api</artifactId>
             <version>${revision}</version>
         </dependency>
@@ -63,7 +63,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>3.1.0</version>
                 <configuration>
-                    <mainClass>com.tinqin.academy.rest.PiimApplication</mainClass>
+                    <mainClass>com.tinqin.academy.piim.rest.PiimApplication</mainClass>
                     <excludes>
                         <exclude>
                             <groupId>org.projectlombok</groupId>

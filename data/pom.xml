@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>com.tinqin.academy</groupId>
+        <groupId>com.tinqin.academy.piim</groupId>
         <artifactId>PIIM</artifactId>
         <version>${revision}</version>
     </parent>
