@@ -1,6 +1,6 @@
 package com.tinqin.academy.rest.exceptionhandler;
 
-import com.tinqin.academy.business.exceptions.DuplicateEntityException;
+import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,8 +12,8 @@ import java.security.InvalidParameterException;
 
 @ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
-    @ExceptionHandler(DuplicateEntityException.class)
-    public ResponseEntity<String> handleEntityDuplicationException(DuplicateEntityException e) {
+    @ExceptionHandler(EntityExistsException.class)
+    public ResponseEntity<String> handleEntityDuplicationException(EntityExistsException e) {
         return new ResponseEntity<>(e.getMessage(), HttpStatus.CONFLICT);
     }
 

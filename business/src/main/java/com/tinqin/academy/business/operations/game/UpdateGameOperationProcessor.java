@@ -3,10 +3,10 @@ package com.tinqin.academy.business.operations.game;
 import com.tinqin.academy.api.game.update.UpdateGameInput;
 import com.tinqin.academy.api.game.update.UpdateGameOperation;
 import com.tinqin.academy.api.game.update.UpdateGameResult;
-import com.tinqin.academy.business.exceptions.DuplicateEntityException;
 import com.tinqin.academy.data.models.Game;
 import com.tinqin.academy.data.repositories.GameRepository;
 import com.tinqin.academy.ext.steam.interactors.SteamApiInteractor;
+import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.convert.ConversionService;
@@ -30,7 +30,7 @@ public class UpdateGameOperationProcessor implements UpdateGameOperation {
         }
 
         if (gameRepository.existsByName(input.getName())) {
-            throw new DuplicateEntityException("Game", "name", input.getName());
+            throw new EntityExistsException(String.format("Game with name %s already exists.", input.getName()));
         }
 
         Game game = Game.builder()
