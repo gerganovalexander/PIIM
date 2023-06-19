@@ -28,7 +28,7 @@ public class SystemRequirements {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         SystemRequirements that = (SystemRequirements) o;
-        return Objects.equals(id, that.id) && Objects.equals(operatingSystem, that.operatingSystem) && Objects.equals(cpu, that.cpu) && Objects.equals(gpu, that.gpu) && Objects.equals(ram, that.ram);
+        return Objects.equals(id, that.id);
     }
 
     @Override
