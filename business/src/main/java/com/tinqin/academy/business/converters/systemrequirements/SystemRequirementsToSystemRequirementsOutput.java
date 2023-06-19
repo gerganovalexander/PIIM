@@ -1,4 +1,4 @@
-package com.tinqin.academy.business.converters;
+package com.tinqin.academy.business.converters.systemrequirements;
 
 import com.tinqin.academy.api.entityoutputmodels.SystemRequirementsOutput;
 import com.tinqin.academy.data.models.SystemRequirements;

@@ -1,4 +1,4 @@
-package com.tinqin.academy.business.converters;
+package com.tinqin.academy.business.converters.game;
 
 import com.tinqin.academy.api.game.update.UpdateGameResult;
 import com.tinqin.academy.data.models.Game;

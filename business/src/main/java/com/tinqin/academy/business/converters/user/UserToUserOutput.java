@@ -1,4 +1,4 @@
-package com.tinqin.academy.business.converters;
+package com.tinqin.academy.business.converters.user;
 
 import com.tinqin.academy.api.entityoutputmodels.UserOutput;
 import com.tinqin.academy.data.models.User;

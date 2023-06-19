@@ -1,4 +1,4 @@
-package com.tinqin.academy.business.converters;
+package com.tinqin.academy.business.converters.game;
 
 import com.tinqin.academy.api.category.create.CreateCategoryResult;
 import com.tinqin.academy.api.entityoutputmodels.GameOutput;
