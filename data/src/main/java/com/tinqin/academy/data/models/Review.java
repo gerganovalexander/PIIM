@@ -1,15 +1,20 @@
 package com.tinqin.academy.data.models;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
+@Getter
+@Setter
 @Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode
 @Table(name = "reviews")
-@Data
 public class Review {
 
     @Id
@@ -30,3 +35,5 @@ public class Review {
     @JoinColumn(name = "user_id")
     private User user;
 }
+
+
