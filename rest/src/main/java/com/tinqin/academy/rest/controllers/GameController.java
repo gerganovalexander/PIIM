@@ -18,7 +18,6 @@ import com.tinqin.academy.api.game.getbyname.GetByNameOperation;
 import com.tinqin.academy.api.game.update.UpdateGameInput;
 import com.tinqin.academy.api.game.update.UpdateGameOperation;
 import com.tinqin.academy.api.game.update.UpdateGameResult;
-import com.tinqin.academy.business.services.contracts.GameService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +27,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/games")
 public class GameController {
 
-    private final GameService gameService;
     private final CreateGameOperation createGameOperation;
     private final GetAllGamesOperation getAllGamesOperation;
     private final GetByIdGameOperation getByIdGameOperation;
