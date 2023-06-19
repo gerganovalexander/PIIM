@@ -4,13 +4,13 @@ import com.tinqin.academy.api.systemrequirements.getall.GetAllSystemRequirements
 import com.tinqin.academy.api.systemrequirements.getall.GetAllSystemRequirementsOperation;
 import com.tinqin.academy.api.systemrequirements.getall.GetAllSystemRequirementsResult;
 import com.tinqin.academy.api.systemrequirements.getall.GetAllSystemRequirementsResults;
-import com.tinqin.academy.data.models.SystemRequirements;
 import com.tinqin.academy.data.repositories.SystemRequirementsRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -21,14 +21,12 @@ public class GetAllSystemRequirementsOperationProcessor implements GetAllSystemR
 
     @Override
     public GetAllSystemRequirementsResults process(GetAllSystemRequirementsInput input) {
-        GetAllSystemRequirementsResults allSystemRequirementsResults = new GetAllSystemRequirementsResults();
-        List<GetAllSystemRequirementsResult> list = allSystemRequirementsResults.getSystemRequirementsResults();
-
-        for (SystemRequirements systemRequirements : systemRequirementsRepository.findAll()) {
-            GetAllSystemRequirementsResult convertedSystemRequirements = conversionService.convert(systemRequirements, GetAllSystemRequirementsResult.class);
-            list.add(convertedSystemRequirements);
-        }
-
-        return allSystemRequirementsResults;
+        List<GetAllSystemRequirementsResult> list = systemRequirementsRepository.findAll().stream()
+                .map(systemRequirements -> conversionService.convert(systemRequirements, GetAllSystemRequirementsResult.class))
+                .collect(Collectors.toList());
+        
+        return GetAllSystemRequirementsResults.builder()
+                .systemRequirementsResults(list)
+                .build();
     }
 }
