@@ -26,6 +26,7 @@ import com.tinqin.academy.piim.api.gamepatch.update.UpdateGamePatchResult;
 import com.tinqin.academy.piim.api.review.create.CreateReviewInput;
 import com.tinqin.academy.piim.api.review.create.CreateReviewResult;
 import com.tinqin.academy.piim.api.review.delete.DeleteReviewResult;
+import com.tinqin.academy.piim.api.review.getall.GetAllReviewsResult;
 import com.tinqin.academy.piim.api.review.getbyid.GetByIdReviewResult;
 import com.tinqin.academy.piim.api.review.update.UpdateReviewInput;
 import com.tinqin.academy.piim.api.review.update.UpdateReviewResult;
@@ -111,6 +112,9 @@ public interface PiimApiClient {
     // Review
     @GetMapping("/api/reviews/{id}")
     GetByIdReviewResult getReviewById(@PathVariable @Valid long id);
+
+    @GetMapping("/api/reviews")
+    GetAllReviewsResult getAllReviews();
 
     @PostMapping("/api/reviews")
     CreateReviewResult createReview(@RequestBody @Valid CreateReviewInput review);

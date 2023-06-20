@@ -26,4 +26,7 @@ public class CreateReviewInput implements OperationInput {
     @NotBlank
     private String text;
 
+    @Positive
+    private Long gameId;
+
 }

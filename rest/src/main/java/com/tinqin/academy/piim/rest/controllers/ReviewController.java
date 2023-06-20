@@ -6,6 +6,9 @@ import com.tinqin.academy.piim.api.review.create.CreateReviewResult;
 import com.tinqin.academy.piim.api.review.delete.DeleteReviewInput;
 import com.tinqin.academy.piim.api.review.delete.DeleteReviewOperation;
 import com.tinqin.academy.piim.api.review.delete.DeleteReviewResult;
+import com.tinqin.academy.piim.api.review.getall.GetAllReviewsInput;
+import com.tinqin.academy.piim.api.review.getall.GetAllReviewsOperation;
+import com.tinqin.academy.piim.api.review.getall.GetAllReviewsResult;
 import com.tinqin.academy.piim.api.review.getbyid.GetByIdReviewInput;
 import com.tinqin.academy.piim.api.review.getbyid.GetByIdReviewOperation;
 import com.tinqin.academy.piim.api.review.getbyid.GetByIdReviewResult;
@@ -26,10 +29,16 @@ public class ReviewController {
     private final UpdateReviewOperation updateReviewOperation;
     private final DeleteReviewOperation deleteReviewOperation;
     private final GetByIdReviewOperation getByIdReviewOperation;
+    private final GetAllReviewsOperation getAllReviewsOperation;
 
     @GetMapping("/{id}")
     public GetByIdReviewResult getById(@PathVariable @Valid long id) {
         return getByIdReviewOperation.process(GetByIdReviewInput.builder().id(id).build());
+    }
+
+    @GetMapping
+    public GetAllReviewsResult getAll() {
+        return getAllReviewsOperation.process(new GetAllReviewsInput());
     }
 
     @PostMapping

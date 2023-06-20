@@ -13,4 +13,5 @@ public class ReviewOutput {
     private String text;
     private Integer score;
     private UserOutput user;
+    private GameOutput game;
 }

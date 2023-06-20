@@ -1,5 +1,6 @@
 package com.tinqin.academy.piim.business.converters.review;
 
+import com.tinqin.academy.piim.api.entityoutputmodels.GameOutput;
 import com.tinqin.academy.piim.api.entityoutputmodels.ReviewOutput;
 import com.tinqin.academy.piim.api.entityoutputmodels.UserOutput;
 import com.tinqin.academy.piim.data.models.Review;
@@ -26,6 +27,7 @@ public class ReviewToReviewOutputConverter implements Converter<Review, ReviewOu
                 .text(source.getText())
                 .score(source.getScore())
                 .id(source.getId())
+                .game(conversionService.convert(source.getGame(), GameOutput.class))
                 .build();
     }
 }

@@ -37,4 +37,7 @@ public class Game {
     @OneToMany(mappedBy = "game")
     private Set<GamePatch> listOfPatches;
 
+    @OneToMany(mappedBy = "game")
+    private Set<Review> listOfReviews;
+
 }
