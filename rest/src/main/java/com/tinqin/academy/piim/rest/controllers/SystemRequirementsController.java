@@ -20,7 +20,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/system_requirements")
+@RequestMapping("/api/system-requirements")
 @RequiredArgsConstructor
 public class SystemRequirementsController {
 

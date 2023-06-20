@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/user")
+@RequestMapping("/api/users")
 public class UserController {
 
 
@@ -53,7 +53,7 @@ public class UserController {
 
     }
 
-    @GetMapping("/all-users")
+    @GetMapping
     public GetAllUsersResults getAllUsers() {
         return getAllUsersOperation.process(new GetAllUsersInput());
     }
