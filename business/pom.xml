@@ -16,19 +16,19 @@
         <dependency>
             <groupId>com.tinqin.academy.piim</groupId>
             <artifactId>data</artifactId>
-            <version>${revision}</version>
+            <version>${project.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.tinqin.academy.piim</groupId>
             <artifactId>api</artifactId>
-            <version>${revision}</version>
+            <version>${project.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.tinqin.academy.piim</groupId>
             <artifactId>ext</artifactId>
-            <version>${revision}</version>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 
