@@ -12,5 +12,9 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class GetAllGamesByIdsResult implements OperationResult {
+
+    Integer page;
+    Integer limit;
+    Long totalItems;
     List<GameOutput> games;
 }

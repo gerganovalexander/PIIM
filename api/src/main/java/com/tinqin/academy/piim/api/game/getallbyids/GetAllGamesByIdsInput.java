@@ -12,4 +12,8 @@ import java.util.List;
 @Builder
 public class GetAllGamesByIdsInput implements OperationInput {
     List<Long> ids;
+
+    Integer page;
+
+    Integer size;
 }

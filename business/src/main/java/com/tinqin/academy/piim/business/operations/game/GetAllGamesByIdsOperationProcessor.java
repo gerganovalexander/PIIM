@@ -7,9 +7,10 @@ import com.tinqin.academy.piim.api.game.getallbyids.GetAllGamesByIdsResult;
 import com.tinqin.academy.piim.data.repositories.GameRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.convert.ConversionService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 
 @Service
@@ -21,9 +22,17 @@ public class GetAllGamesByIdsOperationProcessor implements GetAllGamesByIdsOpera
 
     @Override
     public GetAllGamesByIdsResult process(final GetAllGamesByIdsInput input) {
-        List<GameOutput> games = gameRepository.findAllById(input.getIds()).stream()
-                .map(game -> conversionService.convert(game, GameOutput.class)).toList();
+        Pageable pageable = PageRequest.of(input.getPage(), input.getSize());
 
-        return new GetAllGamesByIdsResult(games);
+        Page<GameOutput> games = gameRepository.findAllByIds(input.getIds(), pageable)
+                .map(game -> conversionService.convert(game, GameOutput.class));
+
+
+        return GetAllGamesByIdsResult.builder()
+                .page(games.getNumber())
+                .limit(games.getSize())
+                .totalItems(games.getTotalElements())
+                .games(games.getContent())
+                .build();
     }
 }
