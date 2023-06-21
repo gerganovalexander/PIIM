@@ -12,6 +12,9 @@ import com.tinqin.academy.piim.api.review.getall.GetAllReviewsResult;
 import com.tinqin.academy.piim.api.review.getbyid.GetByIdReviewInput;
 import com.tinqin.academy.piim.api.review.getbyid.GetByIdReviewOperation;
 import com.tinqin.academy.piim.api.review.getbyid.GetByIdReviewResult;
+import com.tinqin.academy.piim.api.review.getreviewsbygameid.GetReviewsByGameIdInput;
+import com.tinqin.academy.piim.api.review.getreviewsbygameid.GetReviewsByGameIdOperation;
+import com.tinqin.academy.piim.api.review.getreviewsbygameid.GetReviewsByGameIdResult;
 import com.tinqin.academy.piim.api.review.update.UpdateReviewInput;
 import com.tinqin.academy.piim.api.review.update.UpdateReviewOperation;
 import com.tinqin.academy.piim.api.review.update.UpdateReviewResult;
@@ -30,6 +33,7 @@ public class ReviewController {
     private final DeleteReviewOperation deleteReviewOperation;
     private final GetByIdReviewOperation getByIdReviewOperation;
     private final GetAllReviewsOperation getAllReviewsOperation;
+    private final GetReviewsByGameIdOperation getReviewsByGameIdOperation;
 
     @GetMapping("/{id}")
     public GetByIdReviewResult getById(@PathVariable @Valid long id) {
@@ -39,6 +43,11 @@ public class ReviewController {
     @GetMapping
     public GetAllReviewsResult getAll() {
         return getAllReviewsOperation.process(new GetAllReviewsInput());
+    }
+
+    @GetMapping(params = "gameId")
+    public GetReviewsByGameIdResult getReviewsByGameId(@RequestParam Long gameId) {
+        return getReviewsByGameIdOperation.process(new GetReviewsByGameIdInput(gameId));
     }
 
     @PostMapping

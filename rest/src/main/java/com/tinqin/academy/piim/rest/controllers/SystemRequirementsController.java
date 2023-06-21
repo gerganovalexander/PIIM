@@ -46,13 +46,13 @@ public class SystemRequirementsController {
         return createSystemRequirementsOperation.process(systemRequirementsInput);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public UpdateSystemRequirementsResult updateSystemRequirements(@PathVariable Long id, @RequestBody @Valid UpdateSystemRequirementsInput systemRequirementsInput) {
         systemRequirementsInput.setId(id);
         return updateSystemRequirementsOperation.process(systemRequirementsInput);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public DeleteSystemRequirementsResult deleteSystemRequirements(@PathVariable Long id) {
         DeleteSystemRequirementsInput deleteSystemRequirementsInput = new DeleteSystemRequirementsInput(id);
         return deleteSystemRequirementsOperation.process(deleteSystemRequirementsInput);

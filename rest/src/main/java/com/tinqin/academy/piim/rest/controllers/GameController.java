@@ -9,6 +9,9 @@ import com.tinqin.academy.piim.api.game.delete.DeleteGameResult;
 import com.tinqin.academy.piim.api.game.getall.GetAllGamesInput;
 import com.tinqin.academy.piim.api.game.getall.GetAllGamesOperation;
 import com.tinqin.academy.piim.api.game.getall.GetAllGamesResults;
+import com.tinqin.academy.piim.api.game.getallbyids.GetAllGamesByIdsInput;
+import com.tinqin.academy.piim.api.game.getallbyids.GetAllGamesByIdsOperation;
+import com.tinqin.academy.piim.api.game.getallbyids.GetAllGamesByIdsResult;
 import com.tinqin.academy.piim.api.game.getbyid.GetByIdGameInput;
 import com.tinqin.academy.piim.api.game.getbyid.GetByIdGameOperation;
 import com.tinqin.academy.piim.api.game.getbyid.GetByIdGameResult;
@@ -33,6 +36,7 @@ public class GameController {
     private final GetByNameOperation getByNameOperation;
     private final UpdateGameOperation updateGameOperation;
     private final DeleteGameOperation deleteGameOperation;
+    private final GetAllGamesByIdsOperation getAllGamesByIdsOperation;
 
     @GetMapping
     public GetAllGamesResults getAll() {
@@ -42,6 +46,11 @@ public class GameController {
     @GetMapping("/{id}")
     public GetByIdGameResult getById(@PathVariable long id) {
         return getByIdGameOperation.process(GetByIdGameInput.builder().id(id).build());
+    }
+
+    @PostMapping("/get-by-ids")
+    public GetAllGamesByIdsResult getAllGamesByIds(@RequestBody @Valid GetAllGamesByIdsInput getAllGamesByIdsInput) {
+        return getAllGamesByIdsOperation.process(getAllGamesByIdsInput);
     }
 
     @GetMapping(params = "name")
