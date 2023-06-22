@@ -9,6 +9,9 @@ import com.tinqin.academy.piim.api.game.delete.DeleteGameResult;
 import com.tinqin.academy.piim.api.game.getall.GetAllGamesInput;
 import com.tinqin.academy.piim.api.game.getall.GetAllGamesOperation;
 import com.tinqin.academy.piim.api.game.getall.GetAllGamesResults;
+import com.tinqin.academy.piim.api.game.getallbycategoryname.GetAllGamesByCategoryNameInput;
+import com.tinqin.academy.piim.api.game.getallbycategoryname.GetAllGamesByCategoryNameOperation;
+import com.tinqin.academy.piim.api.game.getallbycategoryname.GetAllGamesByCategoryNameResult;
 import com.tinqin.academy.piim.api.game.getallbyids.GetAllGamesByIdsInput;
 import com.tinqin.academy.piim.api.game.getallbyids.GetAllGamesByIdsOperation;
 import com.tinqin.academy.piim.api.game.getallbyids.GetAllGamesByIdsResult;
@@ -23,7 +26,10 @@ import com.tinqin.academy.piim.api.game.update.UpdateGameOperation;
 import com.tinqin.academy.piim.api.game.update.UpdateGameResult;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import java.security.InvalidParameterException;
 
 @RestController
 @RequiredArgsConstructor
@@ -37,6 +43,7 @@ public class GameController {
     private final UpdateGameOperation updateGameOperation;
     private final DeleteGameOperation deleteGameOperation;
     private final GetAllGamesByIdsOperation getAllGamesByIdsOperation;
+    private final GetAllGamesByCategoryNameOperation getAllGamesByCategoryNameOperation;
 
     @GetMapping
     public GetAllGamesResults getAll() {
@@ -51,6 +58,21 @@ public class GameController {
     @PostMapping("/get-by-ids")
     public GetAllGamesByIdsResult getAllGamesByIds(@RequestBody @Valid GetAllGamesByIdsInput getAllGamesByIdsInput) {
         return getAllGamesByIdsOperation.process(getAllGamesByIdsInput);
+    }
+
+    @GetMapping("/filter")
+    public GetAllGamesByCategoryNameResult getAllGamesByCategoryName(
+            @Valid GetAllGamesByCategoryNameInput input, BindingResult result) {
+
+        if (result.hasErrors()) {
+            throw new InvalidParameterException(result.getAllErrors().get(0).getDefaultMessage());
+        }
+
+        return getAllGamesByCategoryNameOperation.process(GetAllGamesByCategoryNameInput.builder()
+                .categoryName(input.getCategoryName())
+                .page(input.getPage())
+                .size(input.getSize())
+                .build());
     }
 
     @GetMapping(params = "name")

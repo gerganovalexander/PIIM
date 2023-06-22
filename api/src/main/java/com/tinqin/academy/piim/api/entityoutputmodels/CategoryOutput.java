@@ -8,6 +8,6 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class CategoryOutput {
-    private String id;
+    private Long id;
     private String name;
 }
