@@ -17,8 +17,10 @@ public class GetByNameCategoryOperationProcessor implements GetByNameCategoryOpe
 
     @Override
     public GetByNameCategoryResult process(GetByNameCategoryInput input) {
-        Category category = categoryRepository.findFirstByName(input.getName()).orElseThrow(() ->
-                new EntityNotFoundException(String.format("Category with name %s does not exist.", input.getName())));
+        Category category = categoryRepository
+                .findFirstByName(input.getName())
+                .orElseThrow(() -> new EntityNotFoundException(
+                        String.format("Category with name %s does not exist.", input.getName())));
 
         return GetByNameCategoryResult.builder()
                 .id(category.getId())

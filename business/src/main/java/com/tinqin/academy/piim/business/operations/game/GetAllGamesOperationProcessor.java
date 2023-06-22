@@ -19,16 +19,12 @@ public class GetAllGamesOperationProcessor implements GetAllGamesOperation {
     private final GameRepository gameRepository;
     private final ConversionService conversionService;
 
-
     @Override
     public GetAllGamesResults process(GetAllGamesInput input) {
         List<GetAllGamesResult> results = gameRepository.findAll(PageRequest.of(1, 20)).stream()
                 .map(game -> conversionService.convert(game, GetAllGamesResult.class))
                 .toList();
 
-
-        return GetAllGamesResults.builder()
-                .results(results)
-                .build();
+        return GetAllGamesResults.builder().results(results).build();
     }
 }

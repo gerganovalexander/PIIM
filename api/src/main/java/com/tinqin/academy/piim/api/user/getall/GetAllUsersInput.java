@@ -6,5 +6,4 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class GetAllUsersInput implements OperationInput {
-}
+public class GetAllUsersInput implements OperationInput {}

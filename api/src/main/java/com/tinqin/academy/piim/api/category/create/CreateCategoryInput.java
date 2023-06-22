@@ -13,6 +13,4 @@ import lombok.NoArgsConstructor;
 public class CreateCategoryInput implements OperationInput {
 
     private String name;
-
-
 }

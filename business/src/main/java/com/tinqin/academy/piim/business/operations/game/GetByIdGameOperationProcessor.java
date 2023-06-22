@@ -17,8 +17,10 @@ public class GetByIdGameOperationProcessor implements GetByIdGameOperation {
 
     @Override
     public GetByIdGameResult process(GetByIdGameInput input) {
-        Game game = gameRepository.findById(input.getId()).orElseThrow(
-                () -> new EntityNotFoundException(String.format("Game with id %d not found.", input.getId())));
+        Game game = gameRepository
+                .findById(input.getId())
+                .orElseThrow(
+                        () -> new EntityNotFoundException(String.format("Game with id %d not found.", input.getId())));
 
         return GetByIdGameResult.builder()
                 .id(game.getId())

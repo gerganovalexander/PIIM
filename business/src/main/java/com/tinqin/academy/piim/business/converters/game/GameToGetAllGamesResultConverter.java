@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class GameToGetAllGamesResultConverter implements Converter<Game, GetAllGamesResult> {
 
-
     @Override
     public GetAllGamesResult convert(Game source) {
         return GetAllGamesResult.builder()

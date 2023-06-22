@@ -6,7 +6,8 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SystemRequirementsToUpdateSystemRequirementsResultConverter implements Converter<SystemRequirements, UpdateSystemRequirementsResult> {
+public class SystemRequirementsToUpdateSystemRequirementsResultConverter
+        implements Converter<SystemRequirements, UpdateSystemRequirementsResult> {
     @Override
     public UpdateSystemRequirementsResult convert(SystemRequirements systemRequirements) {
         return UpdateSystemRequirementsResult.builder()
@@ -14,6 +15,7 @@ public class SystemRequirementsToUpdateSystemRequirementsResultConverter impleme
                 .operatingSystem(systemRequirements.getOperatingSystem())
                 .cpu(systemRequirements.getCpu())
                 .gpu(systemRequirements.getGpu())
-                .ram(systemRequirements.getRam()).build();
+                .ram(systemRequirements.getRam())
+                .build();
     }
 }

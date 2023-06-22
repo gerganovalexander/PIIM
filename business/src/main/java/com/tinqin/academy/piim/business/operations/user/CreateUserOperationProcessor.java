@@ -22,8 +22,7 @@ public class CreateUserOperationProcessor implements CreateUserOperation {
 
     @Override
     public CreateUserResult process(CreateUserInput inputUser) {
-        Optional<User> optionalUser = Optional
-                .ofNullable(conversionService.convert(inputUser, User.class));
+        Optional<User> optionalUser = Optional.ofNullable(conversionService.convert(inputUser, User.class));
         User user = optionalUser.orElseThrow(EntityNotFoundException::new);
 
         if (userRepository.existsUserByEmail(user.getEmail()))
@@ -31,6 +30,5 @@ public class CreateUserOperationProcessor implements CreateUserOperation {
 
         userRepository.save(user);
         return conversionService.convert(user, CreateUserResult.class);
-
     }
 }

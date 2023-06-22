@@ -19,10 +19,12 @@ public class GetGamePatchByIdOperationProcessor implements GetGamePatchByIdOpera
 
     @Override
     public GetGamePatchByIdResult process(GetGamePatchByIdInput input) {
-        GamePatch gamePatch = gamePatchRepository.findById(input.getId())
+        GamePatch gamePatch = gamePatchRepository
+                .findById(input.getId())
                 .orElseThrow(() -> new EntityNotFoundException("Game patch with this Id does not exist."));
 
         return GetGamePatchByIdResult.builder()
-                .gamePatch(conversionService.convert(gamePatch, GamePatchOutput.class)).build();
+                .gamePatch(conversionService.convert(gamePatch, GamePatchOutput.class))
+                .build();
     }
 }

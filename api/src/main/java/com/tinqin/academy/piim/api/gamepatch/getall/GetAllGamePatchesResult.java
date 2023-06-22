@@ -11,5 +11,4 @@ import lombok.*;
 public class GetAllGamePatchesResult {
 
     private GamePatchOutput gamePatch;
-
 }

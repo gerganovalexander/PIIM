@@ -19,7 +19,8 @@ public class UpdateGamePatchOperationProcessor implements UpdateGamePatchOperati
 
     @Override
     public UpdateGamePatchResult process(UpdateGamePatchInput input) {
-        GamePatch gamePatchForUpdate = gamePatchRepository.findById(input.getId())
+        GamePatch gamePatchForUpdate = gamePatchRepository
+                .findById(input.getId())
                 .orElseThrow(() -> new EntityNotFoundException("Game patch with this Id does not exist."));
 
         gamePatchForUpdate.setDescription(input.getDescription());

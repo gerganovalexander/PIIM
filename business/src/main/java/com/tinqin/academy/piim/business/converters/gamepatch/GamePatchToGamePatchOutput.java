@@ -24,6 +24,7 @@ public class GamePatchToGamePatchOutput implements Converter<GamePatch, GamePatc
                 .version(source.getVersion())
                 .description(source.getDescription())
                 .uploadedAt(source.getUploadedAt())
-                .game(conversionService.convert(source.getGame(), GameOutput.class)).build();
+                .game(conversionService.convert(source.getGame(), GameOutput.class))
+                .build();
     }
 }

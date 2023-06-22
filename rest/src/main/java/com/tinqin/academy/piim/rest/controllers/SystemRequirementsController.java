@@ -32,7 +32,8 @@ public class SystemRequirementsController {
 
     @GetMapping
     public GetAllSystemRequirementsResults getAll() {
-        return getAllSystemRequirementsOperation.process(GetAllSystemRequirementsInput.builder().build());
+        return getAllSystemRequirementsOperation.process(
+                GetAllSystemRequirementsInput.builder().build());
     }
 
     @GetMapping("/{id}")
@@ -42,12 +43,14 @@ public class SystemRequirementsController {
     }
 
     @PostMapping
-    public CreateSystemRequirementsResult createSystemRequirements(@RequestBody CreateSystemRequirementsInput systemRequirementsInput) {
+    public CreateSystemRequirementsResult createSystemRequirements(
+            @RequestBody CreateSystemRequirementsInput systemRequirementsInput) {
         return createSystemRequirementsOperation.process(systemRequirementsInput);
     }
 
     @PutMapping("/{id}")
-    public UpdateSystemRequirementsResult updateSystemRequirements(@PathVariable Long id, @RequestBody @Valid UpdateSystemRequirementsInput systemRequirementsInput) {
+    public UpdateSystemRequirementsResult updateSystemRequirements(
+            @PathVariable Long id, @RequestBody @Valid UpdateSystemRequirementsInput systemRequirementsInput) {
         systemRequirementsInput.setId(id);
         return updateSystemRequirementsOperation.process(systemRequirementsInput);
     }
@@ -57,5 +60,4 @@ public class SystemRequirementsController {
         DeleteSystemRequirementsInput deleteSystemRequirementsInput = new DeleteSystemRequirementsInput(id);
         return deleteSystemRequirementsOperation.process(deleteSystemRequirementsInput);
     }
-
 }

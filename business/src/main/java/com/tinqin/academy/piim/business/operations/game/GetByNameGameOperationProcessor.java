@@ -17,8 +17,10 @@ public class GetByNameGameOperationProcessor implements GetByNameOperation {
 
     @Override
     public GetByNameGameResult process(GetByNameGameInput input) {
-        Game game = gameRepository.findFirstByName(input.getName()).orElseThrow(
-                () -> new EntityNotFoundException(String.format("Game with name %s does not exist.", input.getName())));
+        Game game = gameRepository
+                .findFirstByName(input.getName())
+                .orElseThrow(() -> new EntityNotFoundException(
+                        String.format("Game with name %s does not exist.", input.getName())));
 
         return GetByNameGameResult.builder()
                 .id(game.getId())

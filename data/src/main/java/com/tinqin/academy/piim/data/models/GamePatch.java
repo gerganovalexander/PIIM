@@ -28,5 +28,4 @@ public class GamePatch {
 
     @ManyToOne
     private Game game;
-
 }

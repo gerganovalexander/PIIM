@@ -22,7 +22,8 @@ public class GetAllSystemRequirementsOperationProcessor implements GetAllSystemR
     @Override
     public GetAllSystemRequirementsResults process(GetAllSystemRequirementsInput input) {
         List<GetAllSystemRequirementsResult> list = systemRequirementsRepository.findAll().stream()
-                .map(systemRequirements -> conversionService.convert(systemRequirements, GetAllSystemRequirementsResult.class))
+                .map(systemRequirements ->
+                        conversionService.convert(systemRequirements, GetAllSystemRequirementsResult.class))
                 .collect(Collectors.toList());
 
         return GetAllSystemRequirementsResults.builder()

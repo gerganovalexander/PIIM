@@ -30,12 +30,10 @@ public class GamePatchController {
     private final UpdateGamePatchOperation updateGamePatchOperation;
     private final DeleteGamePatchOperation deleteGamePatchOperation;
 
-
     @GetMapping("/")
     public GetAllGamePatchesResults getAllGamePatches() {
         GetAllGamePatchesInput getAllGamePatchesInput = new GetAllGamePatchesInput();
         return getAllGamePatchesOperation.process(getAllGamePatchesInput);
-
     }
 
     @GetMapping("/{id}")
@@ -50,8 +48,8 @@ public class GamePatchController {
     }
 
     @PutMapping("/{id}")
-    public UpdateGamePatchResult updateGamePatch(@PathVariable Long id,
-                                                 @Valid @RequestBody UpdateGamePatchInput updateGamePatchInput) {
+    public UpdateGamePatchResult updateGamePatch(
+            @PathVariable Long id, @Valid @RequestBody UpdateGamePatchInput updateGamePatchInput) {
         updateGamePatchInput.setId(id);
         return updateGamePatchOperation.process(updateGamePatchInput);
     }
@@ -61,5 +59,4 @@ public class GamePatchController {
         DeleteGamePatchInput deleteGamePatchInput = new DeleteGamePatchInput(id);
         return deleteGamePatchOperation.process(deleteGamePatchInput);
     }
-
 }

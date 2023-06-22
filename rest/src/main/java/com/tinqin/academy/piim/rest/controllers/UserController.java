@@ -1,6 +1,5 @@
 package com.tinqin.academy.piim.rest.controllers;
 
-
 import com.tinqin.academy.piim.api.user.create.CreateUserInput;
 import com.tinqin.academy.piim.api.user.create.CreateUserOperation;
 import com.tinqin.academy.piim.api.user.create.CreateUserResult;
@@ -23,7 +22,6 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RequestMapping("/api/users")
 public class UserController {
-
 
     private final CreateUserOperation createUserOperation;
     private final UpdateUserOperation updateUserOperation;
@@ -50,13 +48,10 @@ public class UserController {
     @GetMapping("/{id}")
     public GetUserByIdResult getUserById(@PathVariable long id) {
         return getUserByIdOperation.process(GetUserByIdInput.builder().id(id).build());
-
     }
 
     @GetMapping
     public GetAllUsersResults getAllUsers() {
         return getAllUsersOperation.process(new GetAllUsersInput());
     }
-
-
 }

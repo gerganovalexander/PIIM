@@ -18,11 +18,10 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Transactional
     @Modifying
-    @Query("UPDATE User u SET u.firstName = :#{#newUser.firstName}, u.lastName = :#{#newUser.lastName}, u.email = :#{#newUser.email} WHERE u.id = :userId")
+    @Query(
+            "UPDATE User u SET u.firstName = :#{#newUser.firstName}, u.lastName = :#{#newUser.lastName}, u.email = :#{#newUser.email} WHERE u.id = :userId")
     void updateFieldsByUser(@Param("userId") Long userId, @Param("newUser") User newUser);
 
     @Query("SELECT u from User u")
     List<User> getAllUsers();
 }
-
-

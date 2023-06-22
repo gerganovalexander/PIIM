@@ -1,6 +1,5 @@
 package com.tinqin.academy.piim.business.operations.review;
 
-
 import com.tinqin.academy.piim.api.review.update.UpdateReviewInput;
 import com.tinqin.academy.piim.api.review.update.UpdateReviewOperation;
 import com.tinqin.academy.piim.api.review.update.UpdateReviewResult;

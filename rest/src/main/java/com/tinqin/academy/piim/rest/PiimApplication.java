@@ -17,5 +17,4 @@ public class PiimApplication {
     public static void main(String[] args) {
         SpringApplication.run(PiimApplication.class, args);
     }
-
 }

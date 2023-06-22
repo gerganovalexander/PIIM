@@ -1,6 +1,5 @@
 package com.tinqin.academy.piim.business.operations.review;
 
-
 import com.tinqin.academy.piim.api.entityoutputmodels.UserOutput;
 import com.tinqin.academy.piim.api.review.getbyid.GetByIdReviewInput;
 import com.tinqin.academy.piim.api.review.getbyid.GetByIdReviewOperation;
@@ -11,7 +10,6 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
-
 
 @Service
 public class GetByIdReviewOperationProcessor implements GetByIdReviewOperation {
@@ -26,8 +24,10 @@ public class GetByIdReviewOperationProcessor implements GetByIdReviewOperation {
 
     @Override
     public GetByIdReviewResult process(GetByIdReviewInput input) {
-        Review review = reviewRepository.findById(input.getId()).orElseThrow(
-                () -> new EntityNotFoundException(String.format("Review with id %d not found.", input.getId())));
+        Review review = reviewRepository
+                .findById(input.getId())
+                .orElseThrow(() ->
+                        new EntityNotFoundException(String.format("Review with id %d not found.", input.getId())));
 
         return GetByIdReviewResult.builder()
                 .id(review.getId())

@@ -1,4 +1,3 @@
 package com.tinqin.academy.piim.api.generics;
 
-public interface OperationInput {
-}
+public interface OperationInput {}

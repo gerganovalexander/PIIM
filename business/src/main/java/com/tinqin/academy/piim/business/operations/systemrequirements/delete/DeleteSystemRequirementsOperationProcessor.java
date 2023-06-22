@@ -17,12 +17,11 @@ public class DeleteSystemRequirementsOperationProcessor implements DeleteSystemR
 
     @Override
     public DeleteSystemRequirementsResult process(DeleteSystemRequirementsInput input) {
-        SystemRequirements systemRequirements = systemRequirementsRepository.findById(input.getId())
+        SystemRequirements systemRequirements = systemRequirementsRepository
+                .findById(input.getId())
                 .orElseThrow(() -> new EntityNotFoundException("System Requirements with this Id does not exist."));
         systemRequirementsRepository.delete(systemRequirements);
 
-        return DeleteSystemRequirementsResult.builder()
-                .success(true)
-                .build();
+        return DeleteSystemRequirementsResult.builder().success(true).build();
     }
 }

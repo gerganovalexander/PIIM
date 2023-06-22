@@ -16,12 +16,12 @@ public class DeleteGamePatchOperationProcessor implements DeleteGamePatchOperati
 
     @Override
     public DeleteGamePatchResult process(DeleteGamePatchInput input) {
-        GamePatch gamePatchToDelete = gamePatchRepository.findById(input.getId())
+        GamePatch gamePatchToDelete = gamePatchRepository
+                .findById(input.getId())
                 .orElseThrow(() -> new EntityNotFoundException("Game patch with this Id does not exist."));
 
         gamePatchRepository.delete(gamePatchToDelete);
 
-        return DeleteGamePatchResult.builder()
-                .success(true).build();
+        return DeleteGamePatchResult.builder().success(true).build();
     }
 }

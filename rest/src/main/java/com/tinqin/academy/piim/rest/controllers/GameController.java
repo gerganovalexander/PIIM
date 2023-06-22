@@ -55,7 +55,8 @@ public class GameController {
 
     @GetMapping(params = "name")
     public GetByNameGameResult getByName(@RequestParam(name = "name") String name) {
-        return getByNameOperation.process(GetByNameGameInput.builder().name(name).build());
+        return getByNameOperation.process(
+                GetByNameGameInput.builder().name(name).build());
     }
 
     @PostMapping
@@ -64,8 +65,7 @@ public class GameController {
     }
 
     @PutMapping("/{id}")
-    public UpdateGameResult update(@PathVariable long id,
-                                   @Valid @RequestBody UpdateGameInput updateGameInput) {
+    public UpdateGameResult update(@PathVariable long id, @Valid @RequestBody UpdateGameInput updateGameInput) {
         updateGameInput.setId(id);
         return updateGameOperation.process(updateGameInput);
     }

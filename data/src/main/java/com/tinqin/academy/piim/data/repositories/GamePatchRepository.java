@@ -6,5 +6,4 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface GamePatchRepository extends JpaRepository<GamePatch, Long> {
 
     boolean existsGamePatchByVersion(String version);
-
 }

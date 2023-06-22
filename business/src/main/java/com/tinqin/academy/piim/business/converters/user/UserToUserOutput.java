@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserToUserOutput implements Converter<User, UserOutput> {
 
-
     @Override
     public UserOutput convert(User source) {
         return UserOutput.builder()
@@ -16,5 +15,4 @@ public class UserToUserOutput implements Converter<User, UserOutput> {
                 .fullName(source.getFirstName() + " " + source.getLastName())
                 .build();
     }
-
 }

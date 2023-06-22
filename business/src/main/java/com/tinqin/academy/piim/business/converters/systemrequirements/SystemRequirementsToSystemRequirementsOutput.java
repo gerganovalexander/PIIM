@@ -6,7 +6,8 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SystemRequirementsToSystemRequirementsOutput implements Converter<SystemRequirements, SystemRequirementsOutput> {
+public class SystemRequirementsToSystemRequirementsOutput
+        implements Converter<SystemRequirements, SystemRequirementsOutput> {
     @Override
     public SystemRequirementsOutput convert(SystemRequirements source) {
         return SystemRequirementsOutput.builder()

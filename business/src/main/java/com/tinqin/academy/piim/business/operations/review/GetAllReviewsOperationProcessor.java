@@ -23,8 +23,6 @@ public class GetAllReviewsOperationProcessor implements GetAllReviewsOperation {
                 .map(review -> conversionService.convert(review, ReviewOutput.class))
                 .toList();
 
-        return GetAllReviewsResult.builder()
-                .reviews(results)
-                .build();
+        return GetAllReviewsResult.builder().reviews(results).build();
     }
 }

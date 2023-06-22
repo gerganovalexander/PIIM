@@ -12,5 +12,4 @@ import lombok.*;
 public class GetGamePatchByIdResult implements OperationResult {
 
     private GamePatchOutput gamePatch;
-
 }

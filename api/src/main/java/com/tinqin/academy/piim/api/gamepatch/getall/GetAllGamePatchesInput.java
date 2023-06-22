@@ -10,6 +10,4 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @Builder
-public class GetAllGamePatchesInput implements OperationInput {
-
-}
+public class GetAllGamePatchesInput implements OperationInput {}

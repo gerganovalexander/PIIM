@@ -28,5 +28,4 @@ public class CreateReviewInput implements OperationInput {
 
     @Positive
     private Long gameId;
-
 }

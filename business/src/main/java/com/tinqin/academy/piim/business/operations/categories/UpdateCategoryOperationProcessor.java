@@ -28,10 +28,8 @@ public class UpdateCategoryOperationProcessor implements UpdateCategoryOperation
         if (categoryRepository.existsByName(input.getName()))
             throw new EntityExistsException(String.format("Category with name %s already exists.", input.getName()));
 
-        Category category = Category.builder()
-                .id(input.getId())
-                .name(input.getName())
-                .build();
+        Category category =
+                Category.builder().id(input.getId()).name(input.getName()).build();
 
         categoryRepository.save(category);
 

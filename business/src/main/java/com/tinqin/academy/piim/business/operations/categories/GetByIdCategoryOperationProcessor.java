@@ -17,8 +17,10 @@ public class GetByIdCategoryOperationProcessor implements GetByIdCategoryOperati
 
     @Override
     public GetByIdCategoryResult process(GetByIdCategoryInput input) {
-        Category category = categoryRepository.findById(input.getId()).orElseThrow(
-                () -> new EntityNotFoundException(String.format("Category with id %d not found.", input.getId())));
+        Category category = categoryRepository
+                .findById(input.getId())
+                .orElseThrow(() ->
+                        new EntityNotFoundException(String.format("Category with id %d not found.", input.getId())));
 
         return GetByIdCategoryResult.builder()
                 .id(category.getId())

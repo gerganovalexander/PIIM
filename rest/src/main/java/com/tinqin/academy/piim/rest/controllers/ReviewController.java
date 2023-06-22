@@ -27,7 +27,6 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class ReviewController {
 
-
     private final CreateReviewOperation createReviewOperation;
     private final UpdateReviewOperation updateReviewOperation;
     private final DeleteReviewOperation deleteReviewOperation;
@@ -37,7 +36,8 @@ public class ReviewController {
 
     @GetMapping("/{id}")
     public GetByIdReviewResult getById(@PathVariable @Valid long id) {
-        return getByIdReviewOperation.process(GetByIdReviewInput.builder().id(id).build());
+        return getByIdReviewOperation.process(
+                GetByIdReviewInput.builder().id(id).build());
     }
 
     @GetMapping
@@ -55,7 +55,6 @@ public class ReviewController {
         return createReviewOperation.process(review);
     }
 
-
     @PutMapping("/{id}")
     public UpdateReviewResult update(@PathVariable long id, @RequestBody @Valid UpdateReviewInput review) {
         review.setId(id);
@@ -66,6 +65,4 @@ public class ReviewController {
     public DeleteReviewResult delete(@PathVariable long id) {
         return deleteReviewOperation.process(DeleteReviewInput.builder().id(id).build());
     }
-
-
 }

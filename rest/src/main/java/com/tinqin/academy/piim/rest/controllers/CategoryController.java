@@ -41,12 +41,14 @@ public class CategoryController {
 
     @GetMapping("/{id}")
     public GetByIdCategoryResult getById(@PathVariable long id) {
-        return getByIdCategoryOperation.process(GetByIdCategoryInput.builder().id(id).build());
+        return getByIdCategoryOperation.process(
+                GetByIdCategoryInput.builder().id(id).build());
     }
 
     @GetMapping(params = "name")
     public GetByNameCategoryResult getByName(@RequestParam(name = "name") String name) {
-        return getByNameCategoryOperation.process(GetByNameCategoryInput.builder().name(name).build());
+        return getByNameCategoryOperation.process(
+                GetByNameCategoryInput.builder().name(name).build());
     }
 
     @PostMapping
@@ -62,6 +64,7 @@ public class CategoryController {
 
     @DeleteMapping("/{id}")
     public DeleteCategoryResult delete(@PathVariable long id) {
-        return deleteCategoryOperation.process(DeleteCategoryInput.builder().id(id).build());
+        return deleteCategoryOperation.process(
+                DeleteCategoryInput.builder().id(id).build());
     }
 }

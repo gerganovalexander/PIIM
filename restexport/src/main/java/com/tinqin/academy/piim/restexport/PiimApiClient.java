@@ -60,7 +60,7 @@ public interface PiimApiClient {
 
     @RequestLine("GET /api/categories/{id}")
     GetByIdCategoryResult getCategoryById(@Param long id);
-    
+
     @RequestLine("GET /api/categories?name={name}")
     GetByNameCategoryResult getCategoryByName(@Param String name);
 
@@ -72,7 +72,6 @@ public interface PiimApiClient {
 
     @RequestLine("DELETE /api/categories/{id}")
     DeleteCategoryResult deleteCategory(@Param long id);
-
 
     // Game
     @RequestLine("GET /api/games")
@@ -96,7 +95,6 @@ public interface PiimApiClient {
     @RequestLine("DELETE /api/games/{id}")
     DeleteGameResult deleteGame(@Param long id);
 
-
     // Game patch
     @RequestLine("GET /api/game-patches")
     GetAllGamePatchesResults getAllGamePatches();
@@ -108,12 +106,10 @@ public interface PiimApiClient {
     CreateGamePatchResult createGamePatch(CreateGamePatchInput input);
 
     @RequestLine("PUT /api/game-patches/{id}")
-    UpdateGamePatchResult updateGamePatch(@Param Long id,
-                                          UpdateGamePatchInput updateGamePatchInput);
+    UpdateGamePatchResult updateGamePatch(@Param Long id, UpdateGamePatchInput updateGamePatchInput);
 
     @RequestLine("DELETE /api/game-patches/{id}")
     DeleteGamePatchResult deleteGamePatch(@Param Long id);
-
 
     // Review
     @RequestLine("GET /api/reviews")
@@ -134,7 +130,6 @@ public interface PiimApiClient {
     @RequestLine("DELETE /api/reviews/{id}")
     DeleteReviewResult deleteReview(@Param long id);
 
-
     // System Requirements
     @RequestLine("GET /api/system-requirements")
     GetAllSystemRequirementsResults getAllSystemRequirements();
@@ -146,12 +141,11 @@ public interface PiimApiClient {
     CreateSystemRequirementsResult createSystemRequirements(CreateSystemRequirementsInput systemRequirementsInput);
 
     @RequestLine("PUT /api/system-requirements/{id}")
-    UpdateSystemRequirementsResult updateSystemRequirements(@Param Long id,
-                                                            UpdateSystemRequirementsInput systemRequirementsInput);
+    UpdateSystemRequirementsResult updateSystemRequirements(
+            @Param Long id, UpdateSystemRequirementsInput systemRequirementsInput);
 
     @RequestLine("DELETE /api/system-requirements/{id}")
     DeleteSystemRequirementsResult deleteSystemRequirements(@Param Long id);
-
 
     // User
     @RequestLine("GET /api/users")

@@ -24,8 +24,6 @@ public class DeleteGameOperationProcessor implements DeleteGameOperation {
         }
         gameRepository.deleteById(input.getId());
 
-        return DeleteGameResult.builder()
-                .success(true)
-                .build();
+        return DeleteGameResult.builder().success(true).build();
     }
 }

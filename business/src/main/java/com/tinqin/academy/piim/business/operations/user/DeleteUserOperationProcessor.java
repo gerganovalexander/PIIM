@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 public class DeleteUserOperationProcessor implements DeleteUserOperation {
     private final UserRepository userRepository;
 
-
     @Override
     public DeleteUserResult process(DeleteUserInput userInput) {
         if (!userRepository.existsById(userInput.getId())) {

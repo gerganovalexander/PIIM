@@ -24,7 +24,6 @@ public class GetAllGamePatchesOperationProcessor implements GetAllGamePatchesOpe
                 .map(gamePatch -> conversionService.convert(gamePatch, GetAllGamePatchesResult.class))
                 .collect(Collectors.toList());
 
-        return GetAllGamePatchesResults.builder()
-                .results(results).build();
+        return GetAllGamePatchesResults.builder().results(results).build();
     }
 }

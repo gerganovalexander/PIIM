@@ -23,7 +23,8 @@ public class CreateGamePatchOperationProcessor implements CreateGamePatchOperati
 
     @Override
     public CreateGamePatchResult process(CreateGamePatchInput input) {
-        Game game = gameRepository.findById(input.getGameId())
+        Game game = gameRepository
+                .findById(input.getGameId())
                 .orElseThrow(() -> new EntityNotFoundException("Game with this Id does not exist."));
 
         boolean patchExists = gamePatchRepository.existsGamePatchByVersion(input.getVersion());
@@ -34,7 +35,8 @@ public class CreateGamePatchOperationProcessor implements CreateGamePatchOperati
         GamePatch gamePatch = GamePatch.builder()
                 .version(input.getVersion())
                 .description(input.getDescription())
-                .game(game).build();
+                .game(game)
+                .build();
 
         gamePatch = gamePatchRepository.save(gamePatch);
 

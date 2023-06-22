@@ -24,8 +24,6 @@ public class DeleteCategoryOperationProcessor implements DeleteCategoryOperation
 
         categoryRepository.deleteById(input.getId());
 
-        return DeleteCategoryResult.builder()
-                .success(true)
-                .build();
+        return DeleteCategoryResult.builder().success(true).build();
     }
 }

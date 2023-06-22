@@ -37,7 +37,8 @@ public class GameToGameOutput implements Converter<Game, GameOutput> {
     }
 
     private Set<CreateCategoryResult> getCategories(Set<Category> source) {
-        return source.stream().map(category -> conversionService.convert(category, CreateCategoryResult.class))
+        return source.stream()
+                .map(category -> conversionService.convert(category, CreateCategoryResult.class))
                 .collect(Collectors.toSet());
     }
 

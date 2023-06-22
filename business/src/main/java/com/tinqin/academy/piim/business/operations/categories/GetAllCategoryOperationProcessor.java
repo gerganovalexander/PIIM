@@ -25,8 +25,6 @@ public class GetAllCategoryOperationProcessor implements GetAllCategoryOperation
                 .map(category -> conversionService.convert(category, GetAllCategoryResult.class))
                 .collect(Collectors.toList());
 
-        return GetAllCategoryResults.builder()
-                .results(results)
-                .build();
+        return GetAllCategoryResults.builder().results(results).build();
     }
 }

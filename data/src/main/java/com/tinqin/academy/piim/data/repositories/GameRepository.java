@@ -16,5 +16,4 @@ public interface GameRepository extends JpaRepository<Game, Long> {
 
     @Query(value = "SELECT g FROM Game g WHERE g.id IN (:ids)")
     Page<Game> findAllByIds(List<Long> ids, Pageable pageable);
-
 }

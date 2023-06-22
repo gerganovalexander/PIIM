@@ -10,5 +10,4 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Builder
-public class GetAllReviewsInput implements OperationInput {
-}
+public class GetAllReviewsInput implements OperationInput {}

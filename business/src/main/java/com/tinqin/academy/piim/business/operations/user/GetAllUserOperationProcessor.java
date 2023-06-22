@@ -26,7 +26,4 @@ public class GetAllUserOperationProcessor implements GetAllUsersOperation {
 
         return new GetAllUsersResults(results);
     }
-
-
 }
-

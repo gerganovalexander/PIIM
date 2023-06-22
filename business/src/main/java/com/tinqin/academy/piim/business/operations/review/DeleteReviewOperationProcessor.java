@@ -1,6 +1,5 @@
 package com.tinqin.academy.piim.business.operations.review;
 
-
 import com.tinqin.academy.piim.api.review.delete.DeleteReviewInput;
 import com.tinqin.academy.piim.api.review.delete.DeleteReviewOperation;
 import com.tinqin.academy.piim.api.review.delete.DeleteReviewResult;
@@ -25,8 +24,6 @@ public class DeleteReviewOperationProcessor implements DeleteReviewOperation {
 
         reviewRepository.deleteById(input.getId());
 
-        return DeleteReviewResult.builder()
-                .success(true)
-                .build();
+        return DeleteReviewResult.builder().success(true).build();
     }
 }

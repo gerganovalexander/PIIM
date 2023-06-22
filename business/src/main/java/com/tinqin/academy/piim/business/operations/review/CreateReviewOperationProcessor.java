@@ -1,6 +1,5 @@
 package com.tinqin.academy.piim.business.operations.review;
 
-
 import com.tinqin.academy.piim.api.entityoutputmodels.ReviewOutput;
 import com.tinqin.academy.piim.api.review.create.CreateReviewInput;
 import com.tinqin.academy.piim.api.review.create.CreateReviewOperation;
@@ -24,7 +23,8 @@ public class CreateReviewOperationProcessor implements CreateReviewOperation {
     @Override
     public CreateReviewResult process(CreateReviewInput input) {
 
-        User user = userRepository.findById(input.getUserId())
+        User user = userRepository
+                .findById(input.getUserId())
                 .orElseThrow(() -> new EntityNotFoundException("User with this Id does not exist."));
 
         Review review = Review.builder()
@@ -32,7 +32,6 @@ public class CreateReviewOperationProcessor implements CreateReviewOperation {
                 .score(input.getScore())
                 .user(user)
                 .build();
-
 
         review = reviewRepository.save(review);
 

@@ -19,7 +19,8 @@ public class GetSystemRequirementsByIdOperationProcessor implements GetSystemReq
 
     @Override
     public GetSystemRequirementsByIdResult process(GetSystemRequirementsByIdInput input) {
-        SystemRequirements systemRequirements = systemRequirementsRepository.findById(input.getId())
+        SystemRequirements systemRequirements = systemRequirementsRepository
+                .findById(input.getId())
                 .orElseThrow(() -> new EntityNotFoundException("System Requirements with this Id does not exist."));
         return conversionService.convert(systemRequirements, GetSystemRequirementsByIdResult.class);
     }

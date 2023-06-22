@@ -10,8 +10,6 @@ public class CreateCategoryInputToCategoryConverter implements Converter<CreateC
 
     @Override
     public Category convert(CreateCategoryInput categoryInput) {
-        return Category.builder()
-                .name(categoryInput.getName())
-                .build();
+        return Category.builder().name(categoryInput.getName()).build();
     }
 }

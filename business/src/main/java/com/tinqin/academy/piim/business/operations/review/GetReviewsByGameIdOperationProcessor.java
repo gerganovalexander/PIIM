@@ -21,15 +21,14 @@ public class GetReviewsByGameIdOperationProcessor implements GetReviewsByGameIdO
     @Override
     public GetReviewsByGameIdResult process(final GetReviewsByGameIdInput input) {
 
-        List<ReviewOutput> reviews = gameRepository.findById(input.getId())
+        List<ReviewOutput> reviews = gameRepository
+                .findById(input.getId())
                 .orElseThrow(() -> new EntityNotFoundException("Game not found"))
-                .getListOfReviews().stream()
+                .getListOfReviews()
+                .stream()
                 .map(review -> conversionService.convert(review, ReviewOutput.class))
                 .toList();
 
         return new GetReviewsByGameIdResult(reviews);
-
     }
-
-
 }

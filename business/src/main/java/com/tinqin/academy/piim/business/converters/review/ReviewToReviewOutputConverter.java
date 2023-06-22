@@ -19,7 +19,6 @@ public class ReviewToReviewOutputConverter implements Converter<Review, ReviewOu
         this.conversionService = conversionService;
     }
 
-
     @Override
     public ReviewOutput convert(Review source) {
         return ReviewOutput.builder()

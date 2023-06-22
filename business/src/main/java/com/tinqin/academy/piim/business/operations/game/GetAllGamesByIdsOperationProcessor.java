@@ -12,7 +12,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-
 @Service
 @RequiredArgsConstructor
 public class GetAllGamesByIdsOperationProcessor implements GetAllGamesByIdsOperation {
@@ -24,9 +23,9 @@ public class GetAllGamesByIdsOperationProcessor implements GetAllGamesByIdsOpera
     public GetAllGamesByIdsResult process(final GetAllGamesByIdsInput input) {
         Pageable pageable = PageRequest.of(input.getPage(), input.getSize());
 
-        Page<GameOutput> games = gameRepository.findAllByIds(input.getIds(), pageable)
+        Page<GameOutput> games = gameRepository
+                .findAllByIds(input.getIds(), pageable)
                 .map(game -> conversionService.convert(game, GameOutput.class));
-
 
         return GetAllGamesByIdsResult.builder()
                 .page(games.getNumber())

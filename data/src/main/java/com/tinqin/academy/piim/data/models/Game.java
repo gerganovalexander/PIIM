@@ -39,5 +39,4 @@ public class Game {
 
     @OneToMany(mappedBy = "game")
     private Set<Review> listOfReviews;
-
 }

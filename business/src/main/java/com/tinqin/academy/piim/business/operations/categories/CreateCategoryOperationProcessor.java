@@ -14,7 +14,6 @@ import java.security.InvalidParameterException;
 
 @RequiredArgsConstructor
 @Service
-
 public class CreateCategoryOperationProcessor implements CreateCategoryOperation {
     private final CategoryRepository categoryRepository;
     private final ConversionService conversionService;
@@ -32,5 +31,4 @@ public class CreateCategoryOperationProcessor implements CreateCategoryOperation
         category = categoryRepository.save(category);
         return conversionService.convert(category, CreateCategoryResult.class);
     }
-
 }
