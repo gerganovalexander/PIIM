@@ -14,7 +14,7 @@ public interface GameRepository extends JpaRepository<Game, Long> {
 
     boolean existsByName(String name);
 
-    @Query(value = "SELECT g FROM Game g WHERE (:ids IS NULL OR g.id IN :ids)")
+    @Query(value = "SELECT g FROM Game g WHERE g.id IN (:ids)")
     Page<Game> findAllByIds(List<Long> ids, Pageable pageable);
 
 }
