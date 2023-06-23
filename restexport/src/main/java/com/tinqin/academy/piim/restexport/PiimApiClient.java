@@ -12,7 +12,6 @@ import com.tinqin.academy.piim.api.game.create.CreateGameInput;
 import com.tinqin.academy.piim.api.game.create.CreateGameResult;
 import com.tinqin.academy.piim.api.game.delete.DeleteGameResult;
 import com.tinqin.academy.piim.api.game.getall.GetAllGamesResults;
-import com.tinqin.academy.piim.api.game.getallbycategoryname.GetAllGamesByCategoryNameInput;
 import com.tinqin.academy.piim.api.game.getallbycategoryname.GetAllGamesByCategoryNameResult;
 import com.tinqin.academy.piim.api.game.getallbyids.GetAllGamesByIdsInput;
 import com.tinqin.academy.piim.api.game.getallbyids.GetAllGamesByIdsResult;
@@ -82,8 +81,9 @@ public interface PiimApiClient {
     @RequestLine("POST /api/games/get-by-ids")
     GetAllGamesByIdsResult getAllGamesByIds(GetAllGamesByIdsInput getAllGamesByIdsInput);
 
-    @RequestLine("GET /api/games/filter")
-    GetAllGamesByCategoryNameResult getAllGamesByCategoryName(GetAllGamesByCategoryNameInput input);
+    @RequestLine("GET /api/games/filter?categoryName={categoryName}&page={page}&size={size}")
+    GetAllGamesByCategoryNameResult getAllGamesByCategoryName(
+            @Param String categoryName, @Param Integer page, @Param Integer size);
 
     @RequestLine("GET /api/games/{id}")
     GetByIdGameResult getGameById(@Param long id);

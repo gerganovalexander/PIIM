@@ -22,7 +22,7 @@ public class Game {
     @Column(nullable = false, unique = true)
     private String name;
 
-    @OneToMany
+    @ManyToMany
     private Set<Category> category;
 
     private String avgReviewDescription;

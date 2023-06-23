@@ -19,7 +19,7 @@ public class GetAllGamesByCategoryNameInput implements OperationInput {
     private Integer page;
 
     @NotNull(message = "Size is null")
-    @Min(value = 1, message = "Min")
-    @Max(value = 100, message = "Max")
+    @Min(value = 1, message = "Minimum page size is 1")
+    @Max(value = 100, message = "Maximum page size is 100")
     private Integer size;
 }

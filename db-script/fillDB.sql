@@ -3,7 +3,7 @@
 #
 
 INSERT INTO `categories` (`id`, `name`)
-VALUES ('2', 'ab');
+VALUES ('2', 'action');
 INSERT INTO `categories` (`id`, `name`)
 VALUES ('19', 'accusamus');
 INSERT INTO `categories` (`id`, `name`)
@@ -1729,23 +1729,23 @@ VALUES (3, '1969-05-20 11:35:44.000000', '100', '100', '1994-06-18 23:48:22.0000
 
 
 INSERT INTO `games_category` (`category_id`, `game_id`)
-VALUES ('1', '1');
+VALUES ('2', '1');
 INSERT INTO `games_category` (`category_id`, `game_id`)
 VALUES ('2', '2');
 INSERT INTO `games_category` (`category_id`, `game_id`)
-VALUES ('3', '3');
+VALUES ('2', '3');
 INSERT INTO `games_category` (`category_id`, `game_id`)
-VALUES ('4', '4');
+VALUES ('2', '4');
 INSERT INTO `games_category` (`category_id`, `game_id`)
-VALUES ('5', '5');
+VALUES ('2', '5');
 INSERT INTO `games_category` (`category_id`, `game_id`)
-VALUES ('6', '6');
+VALUES ('2', '6');
 INSERT INTO `games_category` (`category_id`, `game_id`)
-VALUES ('7', '7');
+VALUES ('2', '7');
 INSERT INTO `games_category` (`category_id`, `game_id`)
-VALUES ('8', '8');
+VALUES ('2', '8');
 INSERT INTO `games_category` (`category_id`, `game_id`)
-VALUES ('9', '9');
+VALUES ('2', '9');
 INSERT INTO `games_category` (`category_id`, `game_id`)
 VALUES ('10', '10');
 INSERT INTO `games_category` (`category_id`, `game_id`)
