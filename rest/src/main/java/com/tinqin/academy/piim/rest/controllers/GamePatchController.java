@@ -42,7 +42,7 @@ public class GamePatchController {
         return getGamePatchByIdOperation.process(getGamePatchByIdInput);
     }
 
-    @PostMapping("/")
+    @PostMapping()
     public CreateGamePatchResult createGamePatch(@Valid @RequestBody CreateGamePatchInput input) {
         return createGamePatchOperation.process(input);
     }
