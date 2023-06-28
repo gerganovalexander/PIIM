@@ -7,6 +7,8 @@ import java.util.List;
 
 @Data
 public class SteamGames {
+    Long total;
+
     @JsonProperty("items")
     List<SteamGame> games;
 }

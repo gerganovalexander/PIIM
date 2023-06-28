@@ -16,14 +16,12 @@ public class SteamApiInteractorImpl implements SteamApiInteractor {
     public String getReviewByName(String name) {
 
         SteamGames steamGames = steamApiClient.getSteamGamesByName(name);
-        Long gameId = null;
-        try {
-            gameId = steamGames.getGames().get(0).getId();
-        } catch (IndexOutOfBoundsException e) {
+        if (steamGames.getTotal().equals(0L)) {
             return "N/A";
         }
 
-        SteamGameDescription steamGameDescription = steamApiClient.getSteamDescriptionById(gameId);
+        SteamGameDescription steamGameDescription = steamApiClient.getSteamDescriptionById(
+                steamGames.getGames().get(0).getId());
         return steamGameDescription.getSteamGameReview().getReviewScore();
     }
 }

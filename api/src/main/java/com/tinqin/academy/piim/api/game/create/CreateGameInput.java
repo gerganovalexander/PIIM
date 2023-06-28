@@ -17,15 +17,7 @@ public class CreateGameInput implements OperationInput {
     @NotNull
     private String name;
 
-    private LocalDateTime releaseDate;
+    private Optional<LocalDateTime> releaseDate = Optional.empty();
 
-    private String publisher;
-
-    public Optional<LocalDateTime> getReleaseDate() {
-        return Optional.ofNullable(releaseDate);
-    }
-
-    public Optional<String> getPublisher() {
-        return Optional.ofNullable(publisher);
-    }
+    private Optional<String> publisher = Optional.empty();
 }
