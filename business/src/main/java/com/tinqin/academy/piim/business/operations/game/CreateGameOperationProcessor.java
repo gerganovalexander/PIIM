@@ -11,6 +11,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
 @RequiredArgsConstructor
 public class CreateGameOperationProcessor implements CreateGameOperation {
@@ -24,8 +26,8 @@ public class CreateGameOperationProcessor implements CreateGameOperation {
 
         Game game = Game.builder()
                 .name(input.getName())
-                .releaseDate(input.getReleaseDate())
-                .publisher(input.getPublisher())
+                .releaseDate(input.getReleaseDate().orElse(LocalDateTime.parse("0000-01-01T00:00:00")))
+                .publisher(input.getPublisher().orElse("N/A"))
                 .build();
 
         if (gameRepository.existsByName(game.getName())) {
