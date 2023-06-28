@@ -1,16 +1,15 @@
 package com.tinqin.academy.piim.api.systemrequirements.getbyid;
 
 import com.tinqin.academy.piim.api.generics.OperationInput;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.validation.constraints.NotNull;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class GetSystemRequirementsByIdInput implements OperationInput {
-
+    @NotNull
     Long id;
 }

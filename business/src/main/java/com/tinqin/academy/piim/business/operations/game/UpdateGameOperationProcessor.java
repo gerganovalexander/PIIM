@@ -13,6 +13,7 @@ import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 
 import java.security.InvalidParameterException;
+import java.time.LocalDateTime;
 
 @Service
 @RequiredArgsConstructor
@@ -36,8 +37,8 @@ public class UpdateGameOperationProcessor implements UpdateGameOperation {
         Game game = Game.builder()
                 .id(input.getId())
                 .name(input.getName())
-                .releaseDate(input.getReleaseDate())
-                .publisher(input.getPublisher())
+                .releaseDate(input.getReleaseDate().orElse(LocalDateTime.parse("0000-01-01T00:00:00")))
+                .publisher(input.getPublisher().orElse("N/A"))
                 .build();
 
         game.setAvgReviewDescription(steamApiInteractor.getReviewByName(game.getName()));

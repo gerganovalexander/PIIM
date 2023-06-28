@@ -1,15 +1,15 @@
 package com.tinqin.academy.piim.api.category.create;
 
 import com.tinqin.academy.piim.api.generics.OperationInput;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import jakarta.validation.constraints.NotNull;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class CreateCategoryInput implements OperationInput {
+    @NotNull
     private String name;
 }

@@ -1,6 +1,7 @@
 package com.tinqin.academy.piim.api.gamepatch.create;
 
 import com.tinqin.academy.piim.api.generics.OperationInput;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 @Getter
@@ -10,7 +11,12 @@ import lombok.*;
 @Builder
 public class CreateGamePatchInput implements OperationInput {
 
-    private String version;
-    private String description;
+    @NotNull
     private Long gameId;
+
+    @NotNull
+    private String version;
+
+    @NotNull
+    private String description;
 }
