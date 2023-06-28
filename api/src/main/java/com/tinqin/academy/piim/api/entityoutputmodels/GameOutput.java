@@ -1,6 +1,5 @@
 package com.tinqin.academy.piim.api.entityoutputmodels;
 
-import com.tinqin.academy.piim.api.category.create.CreateCategoryResult;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -16,8 +15,7 @@ public class GameOutput {
 
     private String name;
 
-    //    private Set<CategoryOutput> category;
-    private Set<CreateCategoryResult> category;
+    private Set<CategoryOutput> category;
 
     private String avgReviewDescription;
 

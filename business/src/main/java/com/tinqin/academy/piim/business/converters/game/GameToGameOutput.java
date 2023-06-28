@@ -1,6 +1,6 @@
 package com.tinqin.academy.piim.business.converters.game;
 
-import com.tinqin.academy.piim.api.category.create.CreateCategoryResult;
+import com.tinqin.academy.piim.api.entityoutputmodels.CategoryOutput;
 import com.tinqin.academy.piim.api.entityoutputmodels.GameOutput;
 import com.tinqin.academy.piim.api.entityoutputmodels.SystemRequirementsOutput;
 import com.tinqin.academy.piim.data.models.Category;
@@ -36,9 +36,9 @@ public class GameToGameOutput implements Converter<Game, GameOutput> {
                 .build();
     }
 
-    private Set<CreateCategoryResult> getCategories(Set<Category> source) {
+    private Set<CategoryOutput> getCategories(Set<Category> source) {
         return source.stream()
-                .map(category -> conversionService.convert(category, CreateCategoryResult.class))
+                .map(category -> conversionService.convert(category, CategoryOutput.class))
                 .collect(Collectors.toSet());
     }
 

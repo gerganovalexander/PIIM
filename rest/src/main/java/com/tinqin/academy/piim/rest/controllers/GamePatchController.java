@@ -30,7 +30,7 @@ public class GamePatchController {
     private final UpdateGamePatchOperation updateGamePatchOperation;
     private final DeleteGamePatchOperation deleteGamePatchOperation;
 
-    @GetMapping("/")
+    @GetMapping
     public GetAllGamePatchesResults getAllGamePatches() {
         GetAllGamePatchesInput getAllGamePatchesInput = new GetAllGamePatchesInput();
         return getAllGamePatchesOperation.process(getAllGamePatchesInput);
@@ -42,7 +42,7 @@ public class GamePatchController {
         return getGamePatchByIdOperation.process(getGamePatchByIdInput);
     }
 
-    @PostMapping()
+    @PostMapping
     public CreateGamePatchResult createGamePatch(@Valid @RequestBody CreateGamePatchInput input) {
         return createGamePatchOperation.process(input);
     }
