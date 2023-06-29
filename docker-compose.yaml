@@ -9,6 +9,15 @@ services:
       - MARIADB_DATABASE=piim_database
       - MARIADB_ROOT_PASSWORD=password
 
+  discussion-databse:
+    image: mariadb:latest
+    restart: always
+    ports:
+      - "3307:3306"
+    environment:
+      - MARIADB_DATABASE=discussion_database
+      - MARIADB_ROOT_PASSWORD=password
+
 
   piim-app:
     build: .
