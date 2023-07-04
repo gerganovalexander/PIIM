@@ -6,6 +6,9 @@ import com.tinqin.academy.piim.api.game.create.CreateGameResult;
 import com.tinqin.academy.piim.api.game.delete.DeleteGameInput;
 import com.tinqin.academy.piim.api.game.delete.DeleteGameOperation;
 import com.tinqin.academy.piim.api.game.delete.DeleteGameResult;
+import com.tinqin.academy.piim.api.game.existsbyid.ExistsByIdGameInput;
+import com.tinqin.academy.piim.api.game.existsbyid.ExistsByIdGameOperation;
+import com.tinqin.academy.piim.api.game.existsbyid.ExistsByIdGameResult;
 import com.tinqin.academy.piim.api.game.getall.GetAllGamesInput;
 import com.tinqin.academy.piim.api.game.getall.GetAllGamesOperation;
 import com.tinqin.academy.piim.api.game.getall.GetAllGamesResults;
@@ -44,6 +47,7 @@ public class GameController {
     private final DeleteGameOperation deleteGameOperation;
     private final GetAllGamesByIdsOperation getAllGamesByIdsOperation;
     private final GetAllGamesByCategoryNameOperation getAllGamesByCategoryNameOperation;
+    private final ExistsByIdGameOperation existsByIdGameOperation;
 
     @GetMapping
     public GetAllGamesResults getAll() {
@@ -95,5 +99,11 @@ public class GameController {
     @DeleteMapping("/{id}")
     public DeleteGameResult delete(@PathVariable long id) {
         return deleteGameOperation.process(DeleteGameInput.builder().id(id).build());
+    }
+
+    @GetMapping("/{id}/exists")
+    public ExistsByIdGameResult checkIfGameExistsById(@PathVariable Long id) {
+        return existsByIdGameOperation.process(
+                ExistsByIdGameInput.builder().id(id).build());
     }
 }

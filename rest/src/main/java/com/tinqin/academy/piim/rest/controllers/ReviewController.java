@@ -6,6 +6,9 @@ import com.tinqin.academy.piim.api.review.create.CreateReviewResult;
 import com.tinqin.academy.piim.api.review.delete.DeleteReviewInput;
 import com.tinqin.academy.piim.api.review.delete.DeleteReviewOperation;
 import com.tinqin.academy.piim.api.review.delete.DeleteReviewResult;
+import com.tinqin.academy.piim.api.review.existsbyid.ExistsByIdReviewInput;
+import com.tinqin.academy.piim.api.review.existsbyid.ExistsByIdReviewOperation;
+import com.tinqin.academy.piim.api.review.existsbyid.ExistsByIdReviewResult;
 import com.tinqin.academy.piim.api.review.getall.GetAllReviewsInput;
 import com.tinqin.academy.piim.api.review.getall.GetAllReviewsOperation;
 import com.tinqin.academy.piim.api.review.getall.GetAllReviewsResult;
@@ -33,6 +36,7 @@ public class ReviewController {
     private final GetByIdReviewOperation getByIdReviewOperation;
     private final GetAllReviewsOperation getAllReviewsOperation;
     private final GetReviewsByGameIdOperation getReviewsByGameIdOperation;
+    private final ExistsByIdReviewOperation existsByIdReviewOperation;
 
     @GetMapping("/{id}")
     public GetByIdReviewResult getById(@PathVariable @Valid long id) {
@@ -64,5 +68,11 @@ public class ReviewController {
     @DeleteMapping("/{id}")
     public DeleteReviewResult delete(@PathVariable long id) {
         return deleteReviewOperation.process(DeleteReviewInput.builder().id(id).build());
+    }
+
+    @GetMapping("/{id}/exists")
+    public ExistsByIdReviewResult checkIfReviewExistsById(@PathVariable Long id) {
+        return existsByIdReviewOperation.process(
+                ExistsByIdReviewInput.builder().id(id).build());
     }
 }

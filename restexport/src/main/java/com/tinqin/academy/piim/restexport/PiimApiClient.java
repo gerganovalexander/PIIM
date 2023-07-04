@@ -11,6 +11,7 @@ import com.tinqin.academy.piim.api.category.update.UpdateCategoryResult;
 import com.tinqin.academy.piim.api.game.create.CreateGameInput;
 import com.tinqin.academy.piim.api.game.create.CreateGameResult;
 import com.tinqin.academy.piim.api.game.delete.DeleteGameResult;
+import com.tinqin.academy.piim.api.game.existsbyid.ExistsByIdGameResult;
 import com.tinqin.academy.piim.api.game.getall.GetAllGamesResults;
 import com.tinqin.academy.piim.api.game.getallbycategoryname.GetAllGamesByCategoryNameResult;
 import com.tinqin.academy.piim.api.game.getallbyids.GetAllGamesByIdsInput;
@@ -29,6 +30,7 @@ import com.tinqin.academy.piim.api.gamepatch.update.UpdateGamePatchResult;
 import com.tinqin.academy.piim.api.review.create.CreateReviewInput;
 import com.tinqin.academy.piim.api.review.create.CreateReviewResult;
 import com.tinqin.academy.piim.api.review.delete.DeleteReviewResult;
+import com.tinqin.academy.piim.api.review.existsbyid.ExistsByIdReviewResult;
 import com.tinqin.academy.piim.api.review.getall.GetAllReviewsResult;
 import com.tinqin.academy.piim.api.review.getbyid.GetByIdReviewResult;
 import com.tinqin.academy.piim.api.review.getreviewsbygameid.GetReviewsByGameIdResult;
@@ -51,6 +53,7 @@ import com.tinqin.academy.piim.api.user.update.UpdateUserResult;
 import feign.Headers;
 import feign.Param;
 import feign.RequestLine;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Headers({"Accept: application/json", "Content-Type: application/json"})
 public interface PiimApiClient {
@@ -100,6 +103,9 @@ public interface PiimApiClient {
     @RequestLine("DELETE /api/games/{id}")
     DeleteGameResult deleteGame(@Param long id);
 
+    @RequestLine("GET api/reviews/{id}/exists")
+    public ExistsByIdGameResult checkIfGameExistsById(@PathVariable Long id);
+
     // Game patch
     @RequestLine("GET /api/game-patches")
     GetAllGamePatchesResults getAllGamePatches();
@@ -134,6 +140,9 @@ public interface PiimApiClient {
 
     @RequestLine("DELETE /api/reviews/{id}")
     DeleteReviewResult deleteReview(@Param long id);
+
+    @RequestLine("GET api/games/{id}/exists")
+    ExistsByIdReviewResult checkIfReviewExistsById(@PathVariable Long id);
 
     // System Requirements
     @RequestLine("GET /api/system-requirements")
