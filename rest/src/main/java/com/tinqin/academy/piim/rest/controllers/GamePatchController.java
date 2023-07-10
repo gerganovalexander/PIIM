@@ -17,12 +17,13 @@ import com.tinqin.academy.piim.api.gamepatch.update.UpdateGamePatchOperation;
 import com.tinqin.academy.piim.api.gamepatch.update.UpdateGamePatchResult;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/game-patches")
 @RequiredArgsConstructor
-public class GamePatchController {
+public class GamePatchController extends BaseController{
 
     private final GetGamePatchByIdOperation getGamePatchByIdOperation;
     private final GetAllGamePatchesOperation getAllGamePatchesOperation;
@@ -31,32 +32,32 @@ public class GamePatchController {
     private final DeleteGamePatchOperation deleteGamePatchOperation;
 
     @GetMapping
-    public GetAllGamePatchesResults getAllGamePatches() {
+    public ResponseEntity<?> getAllGamePatches() {
         GetAllGamePatchesInput getAllGamePatchesInput = new GetAllGamePatchesInput();
-        return getAllGamePatchesOperation.process(getAllGamePatchesInput);
+        return handleOperation(getAllGamePatchesOperation.process(getAllGamePatchesInput));
     }
 
     @GetMapping("/{id}")
-    public GetGamePatchByIdResult findGamePatchById(@PathVariable Long id) {
+    public ResponseEntity<?> findGamePatchById(@PathVariable Long id) {
         GetGamePatchByIdInput getGamePatchByIdInput = new GetGamePatchByIdInput(id);
-        return getGamePatchByIdOperation.process(getGamePatchByIdInput);
+        return handleOperation(getGamePatchByIdOperation.process(getGamePatchByIdInput));
     }
 
     @PostMapping
-    public CreateGamePatchResult createGamePatch(@Valid @RequestBody CreateGamePatchInput input) {
-        return createGamePatchOperation.process(input);
+    public ResponseEntity<?> createGamePatch(@Valid @RequestBody CreateGamePatchInput input) {
+        return handleOperation(createGamePatchOperation.process(input));
     }
 
     @PutMapping("/{id}")
-    public UpdateGamePatchResult updateGamePatch(
+    public ResponseEntity<?> updateGamePatch(
             @PathVariable Long id, @Valid @RequestBody UpdateGamePatchInput updateGamePatchInput) {
         updateGamePatchInput.setId(id);
-        return updateGamePatchOperation.process(updateGamePatchInput);
+        return handleOperation(updateGamePatchOperation.process(updateGamePatchInput));
     }
 
     @DeleteMapping("/{id}")
-    public DeleteGamePatchResult deleteGamePatch(@PathVariable Long id) {
+    public ResponseEntity<?> deleteGamePatch(@PathVariable Long id) {
         DeleteGamePatchInput deleteGamePatchInput = new DeleteGamePatchInput(id);
-        return deleteGamePatchOperation.process(deleteGamePatchInput);
+        return handleOperation(deleteGamePatchOperation.process(deleteGamePatchInput));
     }
 }
