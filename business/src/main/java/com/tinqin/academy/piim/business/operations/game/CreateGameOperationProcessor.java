@@ -1,11 +1,15 @@
 package com.tinqin.academy.piim.business.operations.game;
 
+import com.tinqin.academy.piim.api.errors.game.CreateGameError;
 import com.tinqin.academy.piim.api.game.create.CreateGameInput;
 import com.tinqin.academy.piim.api.game.create.CreateGameOperation;
 import com.tinqin.academy.piim.api.game.create.CreateGameResult;
+import com.tinqin.academy.piim.api.generics.PiimError;
 import com.tinqin.academy.piim.data.models.Game;
 import com.tinqin.academy.piim.data.repositories.GameRepository;
 import com.tinqin.academy.piim.ext.steam.interactors.SteamApiInteractor;
+import io.vavr.control.Either;
+import io.vavr.control.Try;
 import jakarta.persistence.EntityExistsException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.convert.ConversionService;
@@ -22,21 +26,26 @@ public class CreateGameOperationProcessor implements CreateGameOperation {
     private final SteamApiInteractor steamApiInteractor;
 
     @Override
-    public CreateGameResult process(CreateGameInput input) {
+    public Either<PiimError, CreateGameResult> process(CreateGameInput input) {
 
-        Game game = Game.builder()
-                .name(input.getName())
-                .releaseDate(input.getReleaseDate().orElse(LocalDateTime.parse("0000-01-01T00:00:00")))
-                .publisher(input.getPublisher().orElse("N/A"))
-                .build();
+        return Try.of(() -> {
+                    Game game = Game.builder()
+                            .name(input.getName())
+                            .releaseDate(input.getReleaseDate().orElse(LocalDateTime.parse("0000-01-01T00:00:00")))
+                            .publisher(input.getPublisher().orElse("N/A"))
+                            .build();
 
-        if (gameRepository.existsByName(game.getName())) {
-            throw new EntityExistsException(String.format("Game with name %s already exists.", input.getName()));
-        }
+                    if (gameRepository.existsByName(game.getName())) {
+                        throw new EntityExistsException(
+                                String.format("Game with name %s already exists.", input.getName()));
+                    }
 
-        game.setAvgReviewDescription(steamApiInteractor.getReviewByName(game.getName()));
-        game = gameRepository.save(game);
+                    game.setAvgReviewDescription(steamApiInteractor.getReviewByName(game.getName()));
+                    game = gameRepository.save(game);
 
-        return conversionService.convert(game, CreateGameResult.class);
+                    return conversionService.convert(game, CreateGameResult.class);
+                })
+                .toEither()
+                .mapLeft(throwable -> new CreateGameError(400, throwable.getMessage()));
     }
 }
