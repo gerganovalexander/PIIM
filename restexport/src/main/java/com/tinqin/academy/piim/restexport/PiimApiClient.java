@@ -8,6 +8,7 @@ import com.tinqin.academy.piim.api.category.getbyid.GetByIdCategoryResult;
 import com.tinqin.academy.piim.api.category.getbyname.GetByNameCategoryResult;
 import com.tinqin.academy.piim.api.category.update.UpdateCategoryInput;
 import com.tinqin.academy.piim.api.category.update.UpdateCategoryResult;
+import com.tinqin.academy.piim.api.errors.category.GetByNameCategoryError;
 import com.tinqin.academy.piim.api.game.create.CreateGameInput;
 import com.tinqin.academy.piim.api.game.create.CreateGameResult;
 import com.tinqin.academy.piim.api.game.delete.DeleteGameResult;
@@ -53,6 +54,7 @@ import com.tinqin.academy.piim.api.user.update.UpdateUserResult;
 import feign.Headers;
 import feign.Param;
 import feign.RequestLine;
+import io.vavr.control.Either;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @Headers({"Accept: application/json", "Content-Type: application/json"})
@@ -66,7 +68,7 @@ public interface PiimApiClient {
     GetByIdCategoryResult getCategoryById(@Param long id);
 
     @RequestLine("GET /api/categories?name={name}")
-    GetByNameCategoryResult getCategoryByName(@Param String name);
+    Either<GetByNameCategoryError, GetByNameCategoryResult> getCategoryByName(@Param String name);
 
     @RequestLine("POST /api/categories")
     CreateCategoryResult createCategory(CreateCategoryInput input);
