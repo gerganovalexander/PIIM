@@ -11,7 +11,6 @@ import com.tinqin.academy.piim.api.game.existsbyid.ExistsByIdGameOperation;
 import com.tinqin.academy.piim.api.game.existsbyid.ExistsByIdGameResult;
 import com.tinqin.academy.piim.api.game.getall.GetAllGamesInput;
 import com.tinqin.academy.piim.api.game.getall.GetAllGamesOperation;
-import com.tinqin.academy.piim.api.game.getall.GetAllGamesResults;
 import com.tinqin.academy.piim.api.game.getallbycategoryname.GetAllGamesByCategoryNameInput;
 import com.tinqin.academy.piim.api.game.getallbycategoryname.GetAllGamesByCategoryNameOperation;
 import com.tinqin.academy.piim.api.game.getallbycategoryname.GetAllGamesByCategoryNameResult;
@@ -29,6 +28,7 @@ import com.tinqin.academy.piim.api.game.update.UpdateGameOperation;
 import com.tinqin.academy.piim.api.game.update.UpdateGameResult;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,7 +37,7 @@ import java.security.InvalidParameterException;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/games")
-public class GameController {
+public class GameController extends BaseController {
 
     private final CreateGameOperation createGameOperation;
     private final GetAllGamesOperation getAllGamesOperation;
@@ -50,8 +50,9 @@ public class GameController {
     private final ExistsByIdGameOperation existsByIdGameOperation;
 
     @GetMapping
-    public GetAllGamesResults getAll() {
-        return getAllGamesOperation.process(GetAllGamesInput.builder().build());
+    public ResponseEntity<?> getAll() {
+        return handleOperation(
+                getAllGamesOperation.process(GetAllGamesInput.builder().build()));
     }
 
     @GetMapping("/{id}")
