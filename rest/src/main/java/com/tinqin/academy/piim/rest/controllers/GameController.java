@@ -13,13 +13,10 @@ import com.tinqin.academy.piim.api.game.getall.GetAllGamesInput;
 import com.tinqin.academy.piim.api.game.getall.GetAllGamesOperation;
 import com.tinqin.academy.piim.api.game.getallbycategoryname.GetAllGamesByCategoryNameInput;
 import com.tinqin.academy.piim.api.game.getallbycategoryname.GetAllGamesByCategoryNameOperation;
-import com.tinqin.academy.piim.api.game.getallbycategoryname.GetAllGamesByCategoryNameResult;
 import com.tinqin.academy.piim.api.game.getallbyids.GetAllGamesByIdsInput;
 import com.tinqin.academy.piim.api.game.getallbyids.GetAllGamesByIdsOperation;
-import com.tinqin.academy.piim.api.game.getallbyids.GetAllGamesByIdsResult;
 import com.tinqin.academy.piim.api.game.getbyid.GetByIdGameInput;
 import com.tinqin.academy.piim.api.game.getbyid.GetByIdGameOperation;
-import com.tinqin.academy.piim.api.game.getbyid.GetByIdGameResult;
 import com.tinqin.academy.piim.api.game.getbyname.GetByNameGameInput;
 import com.tinqin.academy.piim.api.game.getbyname.GetByNameGameResult;
 import com.tinqin.academy.piim.api.game.getbyname.GetByNameOperation;
@@ -56,55 +53,50 @@ public class GameController extends BaseController {
     }
 
     @GetMapping("/{id}")
-    public GetByIdGameResult getById(@PathVariable long id) {
-        return getByIdGameOperation.process(GetByIdGameInput.builder().id(id).build());
+    public ResponseEntity<?> getById(@PathVariable long id) {
+        return handleOperation(
+                getByIdGameOperation.process(GetByIdGameInput.builder().id(id).build()));
     }
 
     @PostMapping("/get-by-ids")
-    public GetAllGamesByIdsResult getAllGamesByIds(@RequestBody @Valid GetAllGamesByIdsInput getAllGamesByIdsInput) {
-        return getAllGamesByIdsOperation.process(getAllGamesByIdsInput);
+    public ResponseEntity<?> getAllGamesByIds(@RequestBody @Valid GetAllGamesByIdsInput getAllGamesByIdsInput) {
+        return handleOperation(getAllGamesByIdsOperation.process(getAllGamesByIdsInput));
     }
 
     @GetMapping("/filter")
-    public GetAllGamesByCategoryNameResult getAllGamesByCategoryName(
-            @Valid GetAllGamesByCategoryNameInput input, BindingResult result) {
-
-        if (result.hasErrors()) {
-            throw new InvalidParameterException(result.getAllErrors().get(0).getDefaultMessage());
-        }
-
-        return getAllGamesByCategoryNameOperation.process(GetAllGamesByCategoryNameInput.builder()
+    public ResponseEntity<?> getAllGamesByCategoryName(@Valid GetAllGamesByCategoryNameInput input) {
+        return handleOperation(getAllGamesByCategoryNameOperation.process(GetAllGamesByCategoryNameInput.builder()
                 .categoryName(input.getCategoryName())
                 .page(input.getPage())
                 .size(input.getSize())
-                .build());
+                .build()));
     }
 
     @GetMapping(params = "name")
-    public GetByNameGameResult getByName(@RequestParam(name = "name") String name) {
-        return getByNameOperation.process(
-                GetByNameGameInput.builder().name(name).build());
+    public ResponseEntity<?> getByName(@RequestParam(name = "name") String name) {
+        return handleOperation(getByNameOperation.process(
+                GetByNameGameInput.builder().name(name).build()));
     }
 
     @PostMapping
-    public CreateGameResult create(@RequestBody @Valid CreateGameInput game) {
-        return createGameOperation.process(game);
+    public ResponseEntity<?> create(@RequestBody @Valid CreateGameInput game) {
+        return handleOperation(createGameOperation.process(game));
     }
 
     @PutMapping("/{id}")
-    public UpdateGameResult update(@PathVariable long id, @Valid @RequestBody UpdateGameInput updateGameInput) {
+    public ResponseEntity<?> update(@PathVariable long id, @Valid @RequestBody UpdateGameInput updateGameInput) {
         updateGameInput.setId(id);
-        return updateGameOperation.process(updateGameInput);
+        return handleOperation(updateGameOperation.process(updateGameInput));
     }
 
     @DeleteMapping("/{id}")
-    public DeleteGameResult delete(@PathVariable long id) {
-        return deleteGameOperation.process(DeleteGameInput.builder().id(id).build());
+    public ResponseEntity<?> delete(@PathVariable long id) {
+        return handleOperation(deleteGameOperation.process(DeleteGameInput.builder().id(id).build()));
     }
 
     @GetMapping("/{id}/exists")
-    public ExistsByIdGameResult checkIfGameExistsById(@PathVariable Long id) {
-        return existsByIdGameOperation.process(
-                ExistsByIdGameInput.builder().id(id).build());
+    public ResponseEntity<?> checkIfGameExistsById(@PathVariable Long id) {
+        return handleOperation(existsByIdGameOperation.process(
+                ExistsByIdGameInput.builder().id(id).build()));
     }
 }
