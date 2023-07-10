@@ -1,5 +1,7 @@
 package com.tinqin.academy.piim.api.generics;
 
+import io.vavr.control.Either;
+
 public interface OperationInterface<I extends OperationInput, R extends OperationResult> {
-    R process(I input);
+    Either<PiimError, R> process(I input);
 }
