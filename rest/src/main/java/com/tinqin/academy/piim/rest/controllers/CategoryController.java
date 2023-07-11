@@ -10,11 +10,8 @@ import com.tinqin.academy.piim.api.category.getbyid.GetByIdCategoryInput;
 import com.tinqin.academy.piim.api.category.getbyid.GetByIdCategoryOperation;
 import com.tinqin.academy.piim.api.category.getbyname.GetByNameCategoryInput;
 import com.tinqin.academy.piim.api.category.getbyname.GetByNameCategoryOperation;
-import com.tinqin.academy.piim.api.category.getbyname.GetByNameCategoryResult;
 import com.tinqin.academy.piim.api.category.update.UpdateCategoryInput;
 import com.tinqin.academy.piim.api.category.update.UpdateCategoryOperation;
-import com.tinqin.academy.piim.api.generics.PiimError;
-import io.vavr.control.Either;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -45,9 +42,9 @@ public class CategoryController extends BaseController {
     }
 
     @GetMapping(params = "name")
-    public Either<PiimError, GetByNameCategoryResult> getByName(@RequestParam(name = "name") String name) {
-        return getByNameCategoryOperation.process(
-                GetByNameCategoryInput.builder().name(name).build());
+    public ResponseEntity<?> getByName(@RequestParam(name = "name") String name) {
+        return handleOperation(getByNameCategoryOperation.process(
+                GetByNameCategoryInput.builder().name(name).build()));
     }
 
     @PostMapping
