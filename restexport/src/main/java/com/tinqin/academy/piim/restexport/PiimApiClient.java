@@ -53,7 +53,6 @@ import com.tinqin.academy.piim.api.user.update.UpdateUserResult;
 import feign.Headers;
 import feign.Param;
 import feign.RequestLine;
-import org.springframework.web.bind.annotation.PathVariable;
 
 @Headers({"Accept: application/json", "Content-Type: application/json"})
 public interface PiimApiClient {
@@ -104,7 +103,7 @@ public interface PiimApiClient {
     DeleteGameResult deleteGame(@Param long id);
 
     @RequestLine("GET api/reviews/{id}/exists")
-    public ExistsByIdGameResult checkIfGameExistsById(@PathVariable Long id);
+    public ExistsByIdGameResult checkIfGameExistsById(@Param Long id);
 
     // Game patch
     @RequestLine("GET /api/game-patches")
@@ -142,7 +141,7 @@ public interface PiimApiClient {
     DeleteReviewResult deleteReview(@Param long id);
 
     @RequestLine("GET api/games/{id}/exists")
-    ExistsByIdReviewResult checkIfReviewExistsById(@PathVariable Long id);
+    ExistsByIdReviewResult checkIfReviewExistsById(@Param Long id);
 
     // System Requirements
     @RequestLine("GET /api/system-requirements")
