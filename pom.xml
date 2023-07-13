@@ -34,6 +34,7 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <revision>0.0.2-SNAPSHOT</revision>
+        <maven.build.timestamp.format>yyyy-MM-dd-HH-mm-ss</maven.build.timestamp.format>
     </properties>
 
     <dependencies>
@@ -54,10 +55,45 @@
             <artifactId>spring-cloud-starter-openfeign</artifactId>
             <version>4.0.3</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+            <version>4.19.0</version>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <version>4.19.0</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.liquibase.ext</groupId>
+                        <artifactId>liquibase-hibernate5</artifactId>
+                        <version>4.19.0</version>
+                        <scope>runtime</scope>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.mariadb.jdbc</groupId>
+                        <artifactId>mariadb-java-client</artifactId>
+                        <version>3.1.4</version>
+                        <scope>runtime</scope>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <changeLogFile>rest/src/main/resources/db/liquibase-changeLog.xml</changeLogFile>
+                    <outputChangeLogFile>${project.basedir}/rest/src/main/resources/db/changelog/${maven.build.timestamp}_changelog.sql</outputChangeLogFile>
+                    <driver>org.mariadb.jdbc.Driver</driver>
+                    <url>jdbc:mariadb://localhost:3306/piim_database</url>
+                    <defaultSchemaName>piim_database</defaultSchemaName>
+                    <username>root</username>
+                    <password>rootpass</password>
+                    <referenceUrl>hibernate:spring:com.tinqin.academy?dialect=org.hibernate.dialect.MySQLDialect</referenceUrl>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>flatten-maven-plugin</artifactId>

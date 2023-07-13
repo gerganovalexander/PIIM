@@ -7,7 +7,7 @@ services:
       - "3306:3306"
     environment:
       - MARIADB_DATABASE=piim_database
-      - MARIADB_ROOT_PASSWORD=password
+      - MARIADB_ROOT_PASSWORD=rootpass
 
   discussion-databse:
     image: mariadb:latest
@@ -29,4 +29,4 @@ services:
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mariadb://maria-database:3306/piim_database?autoReconnect=true&useSSL=false
       - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=password
+      - SPRING_DATASOURCE_PASSWORD=rootpass
