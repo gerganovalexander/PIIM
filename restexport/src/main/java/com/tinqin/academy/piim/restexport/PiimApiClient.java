@@ -48,6 +48,7 @@ import com.tinqin.academy.piim.api.user.create.CreateUserResult;
 import com.tinqin.academy.piim.api.user.delete.DeleteUserResult;
 import com.tinqin.academy.piim.api.user.getall.GetAllUsersResults;
 import com.tinqin.academy.piim.api.user.getbyid.GetUserByIdResult;
+import com.tinqin.academy.piim.api.user.getbyusername.GetUserByEmailResult;
 import com.tinqin.academy.piim.api.user.update.UpdateUserInput;
 import com.tinqin.academy.piim.api.user.update.UpdateUserResult;
 import feign.Headers;
@@ -166,6 +167,9 @@ public interface PiimApiClient {
 
     @RequestLine("GET /api/users/{id}")
     GetUserByIdResult getUserById(@Param long id);
+
+    @RequestLine("GET /api/users?email={email}")
+    GetUserByEmailResult getUserByEmail(@Param String email);
 
     @RequestLine("POST /api/users")
     CreateUserResult createUser(CreateUserInput user);
