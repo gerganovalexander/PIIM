@@ -28,6 +28,7 @@ public class GetUserByEmailOperationProcessor implements GetUserByEmailOperation
                     .email(presentUser.getEmail())
                     .firstName(presentUser.getFirstName())
                     .lastName(presentUser.getLastName())
+                    .password(presentUser.getPassword())
                     .build());
         }
         return Either.left(new GetUserByEmailError(400, "lesh brat"));

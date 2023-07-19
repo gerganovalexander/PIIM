@@ -26,7 +26,7 @@ public class GetUserByIdOperationProcessor implements GetUserByIdOperation {
                     if (!userRepository.existsById(userInput.getId())) {
                         throw new EntityNotFoundException("User not found");
                     }
-                    User user = userRepository.findUserById(userInput.getId());
+                    User user = userRepository.findUserById(userInput.getId()).orElseThrow();
 
                     return conversionService.convert(user, GetUserByIdResult.class);
                 })

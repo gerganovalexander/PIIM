@@ -43,6 +43,11 @@ import com.tinqin.academy.piim.api.systemrequirements.getall.GetAllSystemRequire
 import com.tinqin.academy.piim.api.systemrequirements.getbyid.GetSystemRequirementsByIdResult;
 import com.tinqin.academy.piim.api.systemrequirements.update.UpdateSystemRequirementsInput;
 import com.tinqin.academy.piim.api.systemrequirements.update.UpdateSystemRequirementsResult;
+import com.tinqin.academy.piim.api.token.create.CreateTokenInput;
+import com.tinqin.academy.piim.api.token.create.CreateTokenResult;
+import com.tinqin.academy.piim.api.token.findallvalidtokenbyuser.FindAllValidTokenByUserResult;
+import com.tinqin.academy.piim.api.token.findbytoken.FindByTokenResult;
+import com.tinqin.academy.piim.api.token.revoke.RevokeTokenResult;
 import com.tinqin.academy.piim.api.user.create.CreateUserInput;
 import com.tinqin.academy.piim.api.user.create.CreateUserResult;
 import com.tinqin.academy.piim.api.user.delete.DeleteUserResult;
@@ -179,4 +184,18 @@ public interface PiimApiClient {
 
     @RequestLine("DELETE /api/users/{id}")
     DeleteUserResult deleteUser(@Param long id);
+
+    // Token
+
+    @RequestLine("GET /api/tokens?token={token}")
+    FindByTokenResult findByToken(@Param String token);
+
+    @RequestLine("GET /api/tokens?userId={userId}")
+    FindAllValidTokenByUserResult findAllValidTokenByUser(@Param Long userId);
+
+    @RequestLine("POST /api/tokens")
+    CreateTokenResult createToken(CreateTokenInput input);
+
+    @RequestLine("PUT /api/tokens/revoke?token={token}")
+    RevokeTokenResult revokeToken(@Param String token);
 }

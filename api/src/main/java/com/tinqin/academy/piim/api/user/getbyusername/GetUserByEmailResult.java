@@ -12,5 +12,6 @@ public class GetUserByEmailResult implements OperationResult {
     private Long id;
     private String firstName;
     private String lastName;
+    private String password;
     private String email;
 }

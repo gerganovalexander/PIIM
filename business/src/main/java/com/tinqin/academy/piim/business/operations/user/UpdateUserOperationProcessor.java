@@ -32,7 +32,11 @@ public class UpdateUserOperationProcessor implements UpdateUserOperation {
                     Long id = user.getId();
                     String email = userInput.getEmail();
                     if (userRepository.existsUserByEmail(email)
-                            && !userRepository.findByEmail(email).getId().equals(id)) {
+                            && !userRepository
+                                    .findByEmail(email)
+                                    .orElseThrow()
+                                    .getId()
+                                    .equals(id)) {
                         throw new EntityExistsException(
                                 String.format("User with email %s already exists.", userInput.getEmail()));
                     }
