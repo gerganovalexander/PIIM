@@ -9,5 +9,5 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class FindAllValidTokenByUserInput implements OperationInput {
-    private Long userId;
+    private String email;
 }

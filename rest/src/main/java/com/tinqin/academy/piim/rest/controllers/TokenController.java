@@ -34,10 +34,10 @@ public class TokenController extends BaseController {
                 FindByTokenInput.builder().token(token).build()));
     }
 
-    @GetMapping(params = "userId")
-    public ResponseEntity<?> findAllValidTokenByUser(@RequestParam Long userId) {
+    @GetMapping(params = "email")
+    public ResponseEntity<?> findAllValidTokenByUser(@RequestParam String email) {
         return handleOperation(findAllValidTokenByUserOperation.process(
-                FindAllValidTokenByUserInput.builder().userId(userId).build()));
+                FindAllValidTokenByUserInput.builder().email(email).build()));
     }
 
     @PutMapping(path = "/revoke", params = "token")

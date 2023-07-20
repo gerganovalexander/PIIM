@@ -24,7 +24,7 @@ public class FindAllValidTokenByUserOperationProcessor implements FindAllValidTo
 
     @Override
     public Either<PiimError, FindAllValidTokenByUserResult> process(final FindAllValidTokenByUserInput input) {
-        List<Token> tokens = tokenRepository.findAllValidTokenByUser(input.getUserId());
+        List<Token> tokens = tokenRepository.findAllValidTokenByUser(input.getEmail());
         return Either.right(FindAllValidTokenByUserResult.builder()
                 .tokens(tokens.stream()
                         .map(token -> conversionService.convert(token, TokenOutput.class))

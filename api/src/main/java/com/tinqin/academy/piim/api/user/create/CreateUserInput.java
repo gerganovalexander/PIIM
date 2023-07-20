@@ -18,4 +18,7 @@ public class CreateUserInput implements OperationInput {
 
     @NotNull
     private String email;
+
+    @NotNull
+    private String password;
 }

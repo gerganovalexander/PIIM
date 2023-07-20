@@ -190,8 +190,8 @@ public interface PiimApiClient {
     @RequestLine("GET /api/tokens?token={token}")
     FindByTokenResult findByToken(@Param String token);
 
-    @RequestLine("GET /api/tokens?userId={userId}")
-    FindAllValidTokenByUserResult findAllValidTokenByUser(@Param Long userId);
+    @RequestLine("GET /api/tokens?email={email}")
+    FindAllValidTokenByUserResult findAllValidTokenByUser(@Param String email);
 
     @RequestLine("POST /api/tokens")
     CreateTokenResult createToken(CreateTokenInput input);

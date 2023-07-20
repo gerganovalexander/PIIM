@@ -18,5 +18,5 @@ public class CreateTokenInput implements OperationInput {
     private String tokenType;
 
     @NotNull
-    private Long userId;
+    private String email;
 }

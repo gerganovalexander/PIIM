@@ -30,7 +30,9 @@ public class CreateTokenOperationProcessor implements CreateTokenOperation {
                     Token token = Token.builder()
                             .token(input.getToken())
                             .tokenType(TokenType.valueOf(input.getTokenType()))
-                            .user(userRepository.findUserById(input.getUserId()).orElseThrow())
+                            .user(userRepository
+                                    .findUserByEmail(input.getEmail())
+                                    .orElseThrow())
                             .revoked(false)
                             .expired(false)
                             .build();
