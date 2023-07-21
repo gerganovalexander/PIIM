@@ -14,7 +14,7 @@ public interface TokenRepository extends JpaRepository<Token, Long> {
                     """
       select t from Token t inner join User u\s
       on t.user.id = u.id\s
-      where u.email = :email and (t.expired = false or t.revoked = false)\s
+      where u.email like :email and (t.expired = false or t.revoked = false)\s
       """)
     List<Token> findAllValidTokenByUser(String email);
 

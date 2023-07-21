@@ -11,6 +11,7 @@ public class TokenToTokenOutput implements Converter<Token, TokenOutput> {
     public TokenOutput convert(Token source) {
         return TokenOutput.builder()
                 .id(source.getId())
+                .token(source.getToken())
                 .tokenType(String.valueOf(source.getTokenType()))
                 .expired(source.isExpired())
                 .revoked(source.isRevoked())
